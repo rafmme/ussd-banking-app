@@ -69,8 +69,37 @@ List<Bank> banksList = [
       name: 'Lotus',
       image: 'assets/images/lotusbank.png',
       color: kLotusBankColor,
-      ussdCode: '',
-      listOfavailableBankUssdOps: [],
+      ussdCode: '*5045#',
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*5045#',
+        },
+        {
+          'action': 'Check Account Balance',
+          'code': '*5045*5*1#',
+        },
+        {
+          'action': 'Buy Airtime (for self)',
+          'code': '*5045*amount#',
+        },
+        {
+          'action': 'Buy Airtime (for others)',
+          'code': '*5045*amount*phoneNumber#',
+        },
+        {
+          'action': 'Money Transfers (Lotus to Lotus)',
+          'code': '*5045*amount*accountNumber#',
+        },
+        {
+          'action': 'Money Transfers (to other banks)',
+          'code': '*5045*3*amount*accountNumber#',
+        },
+        {
+          'action': 'Data',
+          'code': '*5045*2*#',
+        },
+      ],
       bankInfo: 'Lotus Bank of Nigeria.'),
   Bank(
       name: 'Polaris',

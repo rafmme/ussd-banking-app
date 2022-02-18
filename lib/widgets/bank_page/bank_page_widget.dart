@@ -18,7 +18,7 @@ class BankScreenWidget extends StatelessWidget {
             child: Stack(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: size.height * 0.3),
+                  margin: EdgeInsets.only(top: size.height * 0.27),
                   height: 550,
                   width: size.width,
                   decoration: const BoxDecoration(
