@@ -1,0 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:ussd_app/helpers/constants.dart';
+
+class TransactionsHistoryPageWidget extends StatelessWidget {
+  const TransactionsHistoryPageWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('Transactions History goes here.'),
+      ),
+    );
+  }
+}
