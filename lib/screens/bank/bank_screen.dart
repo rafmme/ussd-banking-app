@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd_app/helpers/constants.dart';
-import 'package:ussd_app/models/Bank.dart';
+import 'package:ussd_app/models/bank.dart';
 import 'package:ussd_app/widgets/bank_page/bank_page_widget.dart';
 
 class BankScreen extends StatelessWidget {
@@ -20,7 +20,11 @@ class BankScreen extends StatelessWidget {
           children: [
             Text(
               ' ${bank.name}',
-              style: const TextStyle(color: kHomeScreenAppBarIconColor),
+              style: const TextStyle(
+                color: kHomeScreenAppBarIconColor,
+                fontFamily: 'Bodoni',
+                fontSize: 24,
+              ),
             ),
             const Spacer(),
             const Icon(Icons.info_outline_rounded)

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 const kHomeScreenAppBarIconColor = Colors.white;
 
+const kBankUSSDBackground = Color.fromARGB(220, 243, 241, 241);
+
 const kHoomeScreenAppBarColor = Colors.lightGreen;
 
 const kHBody = Color.fromARGB(255, 245, 245, 245);
@@ -30,7 +32,11 @@ const kPolarisBankColor = Color.fromARGB(255, 99, 0, 132);
 
 const kStanbicIBTCColor = Color.fromARGB(255, 7, 62, 138);
 
+const kStandardCharteredBankColor = Color.fromARGB(255, 11, 90, 228);
+
 const kSterlingBankColor = Color.fromARGB(255, 82, 0, 2);
+
+const kTajBankColor = Color.fromARGB(255, 219, 0, 17);
 
 const kUBAColor = Color.fromARGB(255, 199, 25, 16);
 

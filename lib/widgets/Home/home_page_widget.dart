@@ -11,7 +11,7 @@ class HomePageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 15, bottom: 8),
+      padding: const EdgeInsets.only(top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -26,13 +26,15 @@ class HomePageWidget extends StatelessWidget {
                   crossAxisSpacing: 15,
                   childAspectRatio: 0.75,
                 ),
-                itemBuilder: (context, index) => BankCard(
-                    bank: banksList[index],
-                    click: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                BankScreen(bank: banksList[index]))))),
+                itemBuilder: (context, index) => GridTile(
+                      child: BankCard(
+                          bank: banksList[index],
+                          click: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      BankScreen(bank: banksList[index])))),
+                    )),
           ))
         ],
       ),

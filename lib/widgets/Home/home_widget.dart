@@ -35,7 +35,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               const Spacer(),
               Text(
                 appBarTitle,
-                style: const TextStyle(color: kHomeScreenAppBarIconColor),
+                style: const TextStyle(
+                  color: kHomeScreenAppBarIconColor,
+                  fontSize: 24,
+                ),
               ),
               const Spacer(),
               const Icon(Icons.info_outline_rounded)
@@ -50,6 +53,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                   icon: Icon(Icons.history_outlined),
                   label: "Transactions History"),
             ],
+            elevation: 10,
             currentIndex: _currentPage,
             fixedColor: kHoomeScreenAppBarColor,
             onTap: (int inIndex) {

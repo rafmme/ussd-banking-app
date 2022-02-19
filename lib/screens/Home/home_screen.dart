@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: kHoomeScreenAppBarColor,
         scaffoldBackgroundColor: kHBody,
+        fontFamily: 'Skia',
       ),
       home: const HomeScreenWidget(),
     );

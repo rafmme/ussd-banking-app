@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ussd_app/models/Bank.dart';
+import 'package:ussd_app/models/bank.dart';
 
 class BankCard extends StatelessWidget {
   const BankCard({
@@ -39,8 +39,11 @@ class BankCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20 / 4),
               child: Text(
                 bank.name,
-                style:
-                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Bodoni',
+                ),
               ),
             ),
           ),
