@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:ussd_app/helpers/constants.dart';
 
-class TextFieldAlertDialog extends StatelessWidget {
+class ConfirmationAlertDialog extends StatelessWidget {
+  ConfirmationAlertDialog({Key? key, required this.message}) : super(key: key);
+
+  final String message;
   final TextEditingController _textFieldController = TextEditingController();
+
   _displayDialog(BuildContext context) async {
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text('What is your Lucky Number'),
-            content: TextField(
-              controller: _textFieldController,
-              textInputAction: TextInputAction.go,
-              keyboardType: const TextInputType.numberWithOptions(),
-              decoration: const InputDecoration(hintText: "Enter your number"),
-            ),
+            title: const Text('Confirmation'),
+            content: Text(message),
             actions: <Widget>[
               TextButton(
-                child: const Text('Submit'),
+                child: const Text('Cancel'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
+              ),
+              TextButton(
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.phone_outlined,
+                      color: kHomeScreenAppBarIconColor,
+                    ),
+                    Text('Execute'),
+                  ],
+                ),
+                onPressed: () {},
               )
             ],
           );

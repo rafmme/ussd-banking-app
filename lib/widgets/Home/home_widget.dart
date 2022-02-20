@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd_app/helpers/constants.dart';
+import 'package:ussd_app/helpers/widgets_builder.dart';
 import 'package:ussd_app/widgets/Home/home_page_widget.dart';
 import 'package:ussd_app/widgets/transaction_history/transactions_history.dart';
 
@@ -41,7 +42,16 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 ),
               ),
               const Spacer(),
-              const Icon(Icons.info_outline_rounded)
+              GestureDetector(
+                child: const Icon(Icons.info_outline_rounded),
+                onTap: () {
+                  CreateWidget.displayDialog(
+                      context,
+                      'For Nigerians',
+                      'USSD Banking App',
+                      CreateWidget.buildDialogButton(context, true));
+                },
+              )
             ],
           ),
         ),

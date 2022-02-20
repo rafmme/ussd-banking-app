@@ -25,7 +25,7 @@ class BankCard extends StatelessWidget {
                 color: bank.color,
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: const [
-                  BoxShadow(blurRadius: 5, blurStyle: BlurStyle.solid)
+                  BoxShadow(blurRadius: 2, blurStyle: BlurStyle.solid)
                 ],
               ),
               child: Hero(
@@ -40,9 +40,8 @@ class BankCard extends StatelessWidget {
               child: Text(
                 bank.name,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Bodoni',
                 ),
               ),
             ),

@@ -284,7 +284,7 @@ List<Bank> banksList = [
       listOfavailableBankUssdOps: [],
       bankInfo: 'Jaiz Bank of Nigeria.'),
   Bank(
-      name: 'Keystone Bank',
+      name: 'Keystone',
       image: 'assets/images/keystonebank.png',
       color: kKeystoneBankColor,
       ussdCode: '*322*082#',
@@ -382,7 +382,7 @@ List<Bank> banksList = [
       ],
       bankInfo: 'Polaris Bank of Nigeria.'),
   Bank(
-      name: 'Stanbic IBTC Bank',
+      name: 'Stanbic IBTC',
       image: 'assets/images/stanbicibtcbank.png',
       color: kStanbicIBTCColor,
       ussdCode: '*909#',

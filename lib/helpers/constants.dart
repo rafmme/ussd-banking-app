@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 const kHomeScreenAppBarIconColor = Colors.white;
 
-const kBankUSSDBackground = Color.fromARGB(220, 243, 241, 241);
+const kBankUSSDBackground = Color.fromARGB(255, 255, 255, 255);
 
-const kHoomeScreenAppBarColor = Colors.lightGreen;
+const kUssdActionCardBg = Color.fromARGB(220, 243, 241, 241);
+
+const kHoomeScreenAppBarColor = Colors.green;
 
 const kHBody = Color.fromARGB(255, 245, 245, 245);
 

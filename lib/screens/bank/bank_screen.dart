@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd_app/helpers/constants.dart';
+import 'package:ussd_app/helpers/widgets_builder.dart';
 import 'package:ussd_app/models/bank.dart';
 import 'package:ussd_app/widgets/bank_page/bank_page_widget.dart';
 
@@ -22,12 +23,20 @@ class BankScreen extends StatelessWidget {
               ' ${bank.name}',
               style: const TextStyle(
                 color: kHomeScreenAppBarIconColor,
-                fontFamily: 'Bodoni',
                 fontSize: 24,
               ),
             ),
             const Spacer(),
-            const Icon(Icons.info_outline_rounded)
+            GestureDetector(
+              child: const Icon(Icons.info_outline_rounded),
+              onTap: () {
+                CreateWidget.displayDialog(
+                    context,
+                    bank.bankInfo,
+                    '${bank.name} Info',
+                    CreateWidget.buildDialogButton(context, true));
+              },
+            )
           ],
         ),
       ),

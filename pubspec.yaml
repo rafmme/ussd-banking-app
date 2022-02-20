@@ -82,9 +82,6 @@ flutter:
     - family: Skia
       fonts:
         - asset: fonts/Skia.ttf
-    - family: Bodoni
-      fonts:
-        - asset: fonts/Bodoni.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

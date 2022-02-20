@@ -37,7 +37,6 @@ class BankScreenWidget extends StatelessWidget {
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
-                                fontFamily: 'Bodoni',
                               )),
                           const Spacer(),
                           Text(
@@ -59,8 +58,8 @@ class BankScreenWidget extends StatelessWidget {
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
-                                mainAxisSpacing: 10,
-                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 0,
+                                crossAxisSpacing: 0,
                                 childAspectRatio: 1,
                               ),
                               itemBuilder: (context, index) {
