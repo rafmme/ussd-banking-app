@@ -37,4 +37,5 @@
             <data android:scheme="tel" />
         </intent>
     </queries>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 </manifest>

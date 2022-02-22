@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'package:ussd_app/helpers/constants.dart';
 import 'package:ussd_app/widgets/Home/home_widget.dart';
 
@@ -15,7 +16,14 @@ class HomeScreen extends StatelessWidget {
         scaffoldBackgroundColor: kHBody,
         fontFamily: 'Skia',
       ),
-      home: const HomeScreenWidget(),
+      home: Center(
+        child: SplashScreen(
+          navigateAfterSeconds: const HomeScreenWidget(),
+          seconds: 3,
+          imageBackground: const AssetImage('assets/images/sc.jpg'),
+          loaderColor: kLotusBankColor,
+        ),
+      ),
     );
   }
 }

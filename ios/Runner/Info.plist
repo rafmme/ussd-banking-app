@@ -38,6 +38,8 @@
 	<array>
 	    <string>tel</string>
 	</array>
+	<key>NSContactsUsageDescription</key>
+     <string>You can import Receipient from a list of contacts.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

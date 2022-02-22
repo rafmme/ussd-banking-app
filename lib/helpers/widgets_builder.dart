@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
+import 'package:ussd_app/helpers/util.dart';
 
 import 'constants.dart';
 
@@ -119,7 +117,9 @@ class CreateWidget {
                               SizedBox(
                                 width: size.width * 0.47,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Util.importContact();
+                                  },
                                   child: Row(
                                     children: const [
                                       Icon(
@@ -180,7 +180,10 @@ class CreateWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(title),
+            title: Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
             content: Text(message),
             actions: <Widget>[
               Row(

@@ -7,14 +7,69 @@ List<Bank> banksList = [
       image: 'assets/images/accessbank.png',
       color: kAccessBankColor,
       ussdCode: '*901#',
-      listOfavailableBankUssdOps: [],
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*901#',
+        },
+        {
+          'action': 'Check Balance',
+          'code': '*901*5#',
+        },
+        {
+          'action': 'Buy Airtime (for self)',
+          'code': '*901*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Buy Airtime (for others)',
+          'code': '*901*amount*phoneNumber#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Money Transfers(to Access Bank)',
+          'code': '*901*1*amount*accountNumber#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Money Transfers(to other banks)',
+          'code': '*901*2*amount*accountNumber#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Data Purchase',
+          'code': '*901*8#',
+        },
+        {
+          'action': 'Open Account',
+          'code': '*901*0#',
+        },
+        {
+          'action': 'OTP Generation',
+          'code': '*901*4*1#',
+        },
+        {
+          'action': 'Pay Merchant',
+          'code': '*901*3*amount*merchantCode#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Bill Payment',
+          'code': '*901*3#',
+        }
+      ],
       bankInfo: 'Access Bank Plc. of Nigeria.'),
   Bank(
       name: 'Eco Bank',
       image: 'assets/images/ecobank.png',
       color: kEcoBankColor,
       ussdCode: '*326#',
-      listOfavailableBankUssdOps: [],
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*326#',
+        },
+      ],
       bankInfo: 'Eco Bank Plc. of Nigeria.'),
   Bank(
       name: 'FCMB',
@@ -28,7 +83,27 @@ List<Bank> banksList = [
       image: 'assets/images/fidelitybank.jpg',
       color: kFidelityBankColor,
       ussdCode: '*770#',
-      listOfavailableBankUssdOps: [],
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*770#',
+        },
+        {
+          'action': 'Buy Airtime (for self)',
+          'code': '*770*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Buy Airtime (for others)',
+          'code': '*770*phoneNumber*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Money Transfers',
+          'code': '*770*accountNumber*amount#',
+          'dialUp': 'no',
+        },
+      ],
       bankInfo: 'Fidelity Bank of Nigeria.'),
   Bank(
       name: 'First Bank',
@@ -280,8 +355,18 @@ List<Bank> banksList = [
       name: 'Jaiz Bank',
       image: 'assets/images/jaizbank.png',
       color: kJaizBankColor,
-      ussdCode: '',
-      listOfavailableBankUssdOps: [],
+      ussdCode: '*773#',
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*773#',
+        },
+        {
+          'action': 'Buy Airtime (for self)',
+          'code': '*773*amount#',
+          'dialUp': 'no',
+        },
+      ],
       bankInfo: 'Jaiz Bank of Nigeria.'),
   Bank(
       name: 'Keystone',
@@ -538,6 +623,43 @@ List<Bank> banksList = [
       image: 'assets/images/zenithbank.png',
       color: kZenithBankColor,
       ussdCode: '*966#',
-      listOfavailableBankUssdOps: [],
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*966#',
+        },
+        {
+          'action': 'Check Balance',
+          'code': '*966*00#',
+        },
+        {
+          'action': 'Buy Airtime (for self)',
+          'code': '*966*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Buy Airtime (for others)',
+          'code': '*966*amount*phoneNumber#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Money Transfers',
+          'code': '*966*amount*accountNumber#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Update BVN',
+          'code': '*966*bvn#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Cardless Withdrawal',
+          'code': '*966*60#',
+        },
+        {
+          'action': 'Deactivate EazyBanking Profile',
+          'code': '*966*20*0#',
+        },
+      ],
       bankInfo: 'Zenith Bank of Nigeria.'),
 ];

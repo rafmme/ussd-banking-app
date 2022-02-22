@@ -48,7 +48,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                   CreateWidget.displayDialog(
                       context,
                       'For Nigerians',
-                      'USSD Banking App',
+                      '🇳🇬 USSD Banking App',
                       CreateWidget.buildDialogButton(context, true));
                 },
               )
