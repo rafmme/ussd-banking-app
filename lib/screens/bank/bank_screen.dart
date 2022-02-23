@@ -34,7 +34,8 @@ class BankScreen extends StatelessWidget {
                     context,
                     bank.bankInfo,
                     '${bank.name} Info',
-                    CreateWidget.buildDialogButton(context, true));
+                    CreateWidget.buildDialogButton(
+                        context: context, isInfoDialog: true));
               },
             )
           ],

@@ -6,7 +6,8 @@ class Util {
   static void dialUssdCode(String ussdCode) async {
     try {
       // ignore: unnecessary_string_escapes
-      final String formatedUssdCode = ussdCode.replaceAll(RegExp(r'#'), '\%23');
+      final String formatedUssdCode =
+          ussdCode.replaceAll(',', '').replaceAll(RegExp(r'#'), '\%23');
       final String url = 'tel:$formatedUssdCode';
 
       if (await canLaunch(url)) {
@@ -15,6 +16,34 @@ class Util {
     } catch (e) {
       throw 'Unable to dial ussd code $ussdCode';
     }
+  }
+
+  static String formatUssdActionCode({
+    required String ussdCode,
+    required String amount,
+    required String receipient,
+  }) {
+    return ussdCode
+        .replaceFirst('amount', amount)
+        .replaceFirst('phoneNumber', receipient)
+        .replaceFirst('accountNumber', receipient)
+        .replaceFirst('decoderNumber', receipient)
+        .replaceFirst('smartCardNumber', receipient)
+        .replaceFirst('refNumber', receipient)
+        .replaceFirst('merchantCode', receipient);
+  }
+
+  static String formatUssdActionCodeForAmountOnly({
+    required String ussdCode,
+    required String amount,
+  }) {
+    return ussdCode
+        .replaceFirst('amount', amount)
+        .replaceFirst('accountNumber', amount)
+        .replaceFirst('phoneNumber', amount)
+        .replaceFirst('smartCardNumber', amount)
+        .replaceFirst('bvn', amount)
+        .replaceFirst('refNumber', amount);
   }
 
   static Future<Receipient> importContact() async {
@@ -29,5 +58,18 @@ class Util {
     }
 
     return Receipient(name: '', number: '');
+  }
+
+  static String formatPhoneNumber(String rawNumber) {
+    if (rawNumber.startsWith('+234')) {
+      return rawNumber.replaceFirst('+234', '0');
+    }
+
+    return rawNumber;
+  }
+
+  static String formatAmount(String amount) {
+    return amount.split('.')[0].replaceAllMapped(
+        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
   }
 }

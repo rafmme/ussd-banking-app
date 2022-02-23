@@ -18,14 +18,30 @@ class BankUssdActionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final String? ussdAction = ussdActionData['action'];
     final String? ussdCode = ussdActionData['code'];
-    Size size = MediaQuery.of(context).size;
+    final String? ussdShowText = ussdActionData['showText'];
 
     return GridTile(
         child: TextButton(
       onPressed: () {
-        if (ussdActionData['dialUp'] != null) {
+        if (ussdActionData['dialUp'] != null && ussdActionData['amo'] != null) {
           CreateWidget.createModalBottomSheet(
-              context, ussdAction, size, bank.image);
+            context: context,
+            ussdAction: ussdAction,
+            ussdCode: ussdCode,
+            image: bank.image,
+            amo: false,
+            ussdShowText: ussdShowText,
+          );
+          return;
+        } else if (ussdActionData['dialUp'] != null) {
+          CreateWidget.createModalBottomSheet(
+            context: context,
+            ussdAction: ussdAction,
+            ussdCode: ussdCode,
+            image: bank.image,
+            amo: true,
+            ussdShowText: ussdShowText,
+          );
           return;
         }
 

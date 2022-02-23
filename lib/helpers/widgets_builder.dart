@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:ussd_app/helpers/util.dart';
-
-import 'constants.dart';
+import 'package:ussd_app/widgets/ussd_action/amount_only.dart';
+import 'package:ussd_app/widgets/ussd_action/receipient_amount.dart';
 
 class CreateWidget {
-  static Future<void> createModalBottomSheet(
-      BuildContext context, String? ussdAction, Size size, String image) {
+  static Future<void> createModalBottomSheet({
+    required BuildContext context,
+    String? ussdAction,
+    String? ussdCode,
+    required String image,
+    required bool amo,
+    String? ussdShowText,
+  }) {
+    final Widget ussdActionWidget = amo
+        ? AmountOnlyWidget(
+            ussdAction: ussdAction!,
+            ussdCode: ussdCode!,
+            ussdShowText: ussdShowText,
+          )
+        : ReceipientAmountWidget(
+            ussdAction: ussdAction!,
+            ussdCode: ussdCode!,
+            ussdShowText: ussdShowText,
+          );
+
     return showModalBottomSheet<void>(
       context: context,
       elevation: 100,
@@ -40,134 +58,7 @@ class CreateWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 25),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 4),
-                              child: Text(
-                                'Amount',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 45,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    hintText: 'Amount'),
-                                keyboardType: TextInputType.number,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 20, bottom: 10),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 4),
-                              child: Text(
-                                'Receipient',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 45,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    hintText: 'Receipient'),
-                                keyboardType: TextInputType.phone,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        child: SizedBox(
-                          height: 50,
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: size.width * 0.47,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Util.importContact();
-                                  },
-                                  child: Row(
-                                    children: const [
-                                      Icon(
-                                        Icons.contact_phone_outlined,
-                                        color: kHomeScreenAppBarIconColor,
-                                      ),
-                                      Text('Fetch Receipient',
-                                          style: TextStyle(
-                                            color: kHomeScreenAppBarIconColor,
-                                            fontSize: 17,
-                                          )),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              const Spacer(),
-                              SizedBox(
-                                width: size.width * 0.33,
-                                child: ElevatedButton(
-                                    onPressed: () => {
-                                          displayDialog(
-                                              context,
-                                              'message',
-                                              'title',
-                                              buildDialogButton(
-                                                  context, false)),
-                                        },
-                                    child: Row(
-                                      children: const [
-                                        Icon(
-                                          Icons.phone_outlined,
-                                          color: kHomeScreenAppBarIconColor,
-                                        ),
-                                        Text('Execute',
-                                            style: TextStyle(
-                                              color: kHomeScreenAppBarIconColor,
-                                              fontSize: 17,
-                                            )),
-                                      ],
-                                    )),
-                              )
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                ussdActionWidget
               ]),
         );
       },
@@ -184,7 +75,10 @@ class CreateWidget {
               title,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            content: Text(message),
+            content: Text(
+              message,
+              style: const TextStyle(fontSize: 19),
+            ),
             actions: <Widget>[
               Row(
                 children: dialogBtn,
@@ -195,7 +89,9 @@ class CreateWidget {
   }
 
   static List<Widget> buildDialogButton(
-      BuildContext context, bool isInfoDialog) {
+      {required BuildContext context,
+      required bool isInfoDialog,
+      String? ussdCode}) {
     if (isInfoDialog == true) {
       return [
         TextButton(
@@ -221,7 +117,11 @@ class CreateWidget {
       ),
       const Spacer(),
       TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+          Util.dialUssdCode(ussdCode!);
+        },
         child: Row(children: const [
           Icon(
             Icons.phone_outlined,
