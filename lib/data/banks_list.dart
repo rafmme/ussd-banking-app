@@ -13,6 +13,14 @@ List<Bank> banksList = [
           'code': '*901#',
         },
         {
+          'action': 'Deactive USSD Banking',
+          'code': '*901*911#',
+        },
+        {
+          'action': 'Update Info',
+          'code': '*901*12#',
+        },
+        {
           'action': 'Check Balance',
           'code': '*901*5#',
         },
@@ -55,18 +63,38 @@ List<Bank> banksList = [
           'code': '*901*4*1#',
         },
         {
-          'action': 'Pay Merchant',
-          'code': '*901*3*amount*merchantCode#',
+          'action': 'Instant Pay Day Loan',
+          'code': '*901*11#',
+        },
+        {
+          'action': 'Salary Advance & Small Ticket Loan',
+          'code': '*901*11*1#',
+        },
+        {
+          'action': 'Dual Transaction Service (DTS)',
+          'code': '*901*14#',
+        },
+        {
+          'action': 'Pay Merchants',
+          'code': '*901*1*merchantCode*amount#',
           'dialUp': 'no',
           'amo': 'false',
           'showText': 'Merchant Code',
+        },
+        {
+          'action': 'LCC Toll Top-Up',
+          'code': '*901*000*522*accountNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'LCC Account Number',
         },
         {
           'action': 'Bill Payment',
           'code': '*901*3#',
         }
       ],
-      bankInfo: 'Access Bank Plc. of Nigeria.'),
+      bankInfo:
+          'Access Bank PLC\nNSE: ACCESS\n\nHeadquarters: 14/15, Prince Alaba Abiodun Oniru Road, Victoria Island, Lagos, Lagos State, Nigeria.\n\nhttps://www.accessbankplc.com/'),
   Bank(
       name: 'Eco Bank',
       image: 'assets/images/ecobank.png',
@@ -78,13 +106,18 @@ List<Bank> banksList = [
           'code': '*326#',
         },
       ],
-      bankInfo: 'Eco Bank Plc. of Nigeria.'),
+      bankInfo: 'Ecobank Nigeria\n\nNSE: EBN\n\nhttps://ecobank.com/ng'),
   Bank(
       name: 'FCMB',
       image: 'assets/images/fcmbbank.jpg',
       color: kFCMBColor,
       ussdCode: '*389*214#',
-      listOfavailableBankUssdOps: [],
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*389*214#',
+        },
+      ],
       bankInfo: 'First City Monumental Bank of Nigeria.'),
   Bank(
       name: 'Fidelity Bank',
@@ -95,6 +128,48 @@ List<Bank> banksList = [
         {
           'action': 'Main USSD Code',
           'code': '*770#',
+        },
+        {
+          'action': 'Check Balance',
+          'code': '*770*0#',
+        },
+        {
+          'action': 'Block your Card',
+          'code': '*770*911#',
+        },
+        {
+          'action': 'Block Account',
+          'code': '*770*08012345678#',
+        },
+        {
+          'action': 'Disable Instant Banking',
+          'code': '*770*911*phoneNumber#',
+          'dialUp': 'no',
+          'showText': 'Phone Number',
+        },
+        {
+          'action': 'Deactivate mobile banking',
+          'code': '*770*20*0#',
+        },
+        {
+          'action': 'Update BVN',
+          'code': '*770*02#',
+        },
+        {
+          'action': 'Reset your mobile banking PIN',
+          'code': '*770*00#',
+        },
+        {
+          'action': 'Cardless Withdrawal',
+          'code': '*770*8*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Money Transfers',
+          'code': '*770*accountNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Account Number',
         },
         {
           'action': 'Buy Airtime (for self)',
@@ -109,8 +184,80 @@ List<Bank> banksList = [
           'showText': 'Phone Number',
         },
         {
-          'action': 'Money Transfers',
-          'code': '*770*accountNumber*amount#',
+          'action': 'Select between SMS and email alerts',
+          'code': '*770*2#',
+        },
+        {
+          'action': 'Pay Electricity Bill',
+          'code': '*770*code*meterNumber*amount#',
+          'dialUp': 'no',
+          'disco': {
+            'Choose your Area Electricity Disco.': '0',
+            'Enugu (EEDC) Postpaid': '1022',
+            'Enugu (EEDC) Prepaid': '1021',
+            'Ibadan (IBEDC)': '1044',
+            'Kano (KEDCO) Prepaid': '1013',
+            'Kano (KEDCO) Postpaid': '1014',
+            'Port Harcourt (PHED)': '1017',
+            'Benin (BEDC) Postpaid': '1015',
+            'EKEDP Prepaid': '1011',
+            'EKEDP Postpaid': '1012',
+          },
+          'amo': 'false',
+          'electricity': 'wema'
+        },
+        {
+          'action': 'DSTV',
+          'code': '*770*1099*smartCardNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Smart Card Number',
+        },
+        {
+          'action': 'DSTV Box Office',
+          'code': '*770*1098*smartCardNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Smart Card Number',
+        },
+        {
+          'action': 'Startimes',
+          'code': '*770*1077*smartCardNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Smart Card Number',
+        },
+        {
+          'action': 'GOTV',
+          'code': '*770*1088*decoderNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Decoder Number',
+        },
+        {
+          'action': 'Swift 4G Sub.',
+          'code': '*770*1033*customerID*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Customer ID',
+        },
+        {
+          'action': 'NairaBet',
+          'code': '*770*1055*customerID*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Customer Reference',
+        },
+        {
+          'action': 'LCC Toll Payments',
+          'code': '*770*1066*customerID*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'LCC Account Number',
+        },
+        {
+          'action': 'Lagos Toll Company (LTC)',
+          'code': '*770*1068*customerID*amount#',
           'dialUp': 'no',
           'amo': 'false',
           'showText': 'Account Number',
@@ -165,7 +312,8 @@ List<Bank> banksList = [
           'code': '*894*0#',
         },
       ],
-      bankInfo: 'First Bank of Nigeria.'),
+      bankInfo:
+          'First Bank of Nigeria\n\nHeadquarters: 35 Marina, Lagos, Lagos State, Nigeria\n\nhttps://firstbanknigeria.com/'),
   Bank(
       name: 'GTB',
       image: 'assets/images/gtbank.png',
@@ -382,14 +530,21 @@ List<Bank> banksList = [
           'showText': 'Merchant Code',
         },
       ],
-      bankInfo: 'Guaranty Trust Holding Company of Nigeria.'),
+      bankInfo:
+          'Guaranty Trust Holding Company PLC (GTCO PLC)\nLSE: GRTB\n\nHeadquarters: 635 Akin Adesola Street, Victoria Island, Lagos, Lagos State, Nigeria\n\nhttps://www.gtbank.com/'),
   Bank(
       name: 'Heritage Bank',
       image: 'assets/images/heritagebank.png',
       color: kHeritageBankColor,
       ussdCode: '*322*030#',
-      listOfavailableBankUssdOps: [],
-      bankInfo: 'Heritage Bank of Nigeria.'),
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*322*030#',
+        },
+      ],
+      bankInfo:
+          'Heritage Bank Plc\n\nHeadquarters: 292B Ajose Adeogun Street, Victoria Island, Lagos, Lagos State, Nigeria.\n\nhttps://www.hbng.com'),
   Bank(
       name: 'Jaiz Bank',
       image: 'assets/images/jaizbank.png',
@@ -412,8 +567,14 @@ List<Bank> banksList = [
       image: 'assets/images/keystonebank.png',
       color: kKeystoneBankColor,
       ussdCode: '*322*082#',
-      listOfavailableBankUssdOps: [],
-      bankInfo: 'Keystone Bank of Nigeria.'),
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*322*082#',
+        },
+      ],
+      bankInfo:
+          'Keystone Bank Limited\n\nHeadquarters: Victoria Island, Lagos, Lagos State, Nigeria.\n\nhttps://www.keystonebankng.com'),
   Bank(
       name: 'Lotus Bank',
       image: 'assets/images/lotusbank.png',
@@ -514,14 +675,21 @@ List<Bank> banksList = [
           'code': '*833*5#',
         },
       ],
-      bankInfo: 'Polaris Bank of Nigeria.'),
+      bankInfo:
+          'Polaris Bank Limited\n\nHeadquarters: 3 Akin Adesola Street Victoria Island, Lagos, Lagos State, Nigeria.\n\nhttps://polarisbanklimited.com'),
   Bank(
       name: 'Stanbic IBTC',
       image: 'assets/images/stanbicibtcbank.png',
       color: kStanbicIBTCColor,
       ussdCode: '*909#',
-      listOfavailableBankUssdOps: [],
-      bankInfo: 'Stanbic IBTC of Nigeria.'),
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*909#',
+        },
+      ],
+      bankInfo:
+          'Stanbic IBTC Holdings PLC\nNSE: STANBIC\n\nHeadquarters: I.B.T.C. Place, Walter Carrington Crescent, Victoria Island, Lagos State, Nigeria\n\nhttps://www.stanbicibtc.com'),
   Bank(
       name: 'Standard Chartered',
       image: 'assets/images/standardbank.png',
@@ -645,7 +813,8 @@ List<Bank> banksList = [
           'code': '*822*15#',
         },
       ],
-      bankInfo: 'Sterling Bank of Nigeria.'),
+      bankInfo:
+          'Sterling Bank Plc\nNSE: STERLNBANK\n\nHeadquarters: Sterling Towers, 20 Marina, P.M.B. 12735, Lagos, Lagos State, Nigeria\n\nhttps://www.sterling.ng'),
   Bank(
       name: 'Taj Bank',
       image: 'assets/images/tajbank.png',
@@ -908,21 +1077,33 @@ List<Bank> banksList = [
           'code': '*919*12*176#',
         },
       ],
-      bankInfo: 'United Bank of Africa.'),
+      bankInfo:
+          'United Bank for Africa\nNSE: UBA\n\nHeadquarters: UBA House, 57 Marina, Lagos, Lagos State, Nigeria.\n\nhttps://www.ubagroup.com/'),
   Bank(
       name: 'Union Bank',
       image: 'assets/images/unionbank.png',
       color: kUnionBankColor,
       ussdCode: '*826#',
-      listOfavailableBankUssdOps: [],
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*826#',
+        },
+      ],
       bankInfo: 'Union Bank of Nigeria.'),
   Bank(
       name: 'Unity Bank',
       image: 'assets/images/unitybank.jpg',
       color: kUnityBankColor,
       ussdCode: '*7799#',
-      listOfavailableBankUssdOps: [],
-      bankInfo: 'Unity Bank of Nigeria.'),
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*7799#',
+        },
+      ],
+      bankInfo:
+          'Unity Bank plc\nNSE: UNITYBNK\n\nhttps://www.unitybankng.com/'),
   Bank(
       name: 'Wema Bank',
       image: 'assets/images/wemabank.png',
@@ -1120,5 +1301,6 @@ List<Bank> banksList = [
           'code': '*966*20*0#',
         },
       ],
-      bankInfo: 'Zenith Bank of Nigeria.'),
+      bankInfo:
+          'Zenith Bank Plc\nNSE: ZENITHBANK\n\nHeadquarters: Zenith Heights, Plot 83, Ajose Adeogun street, Victoria Island, Lagos, Lagos State, Nigeria\n\nhttps://www.zenithbank.com'),
 ];

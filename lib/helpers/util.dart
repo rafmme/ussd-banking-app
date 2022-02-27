@@ -30,7 +30,8 @@ class Util {
         .replaceFirst('decoderNumber', receipient)
         .replaceFirst('smartCardNumber', receipient)
         .replaceFirst('refNumber', receipient)
-        .replaceFirst('merchantCode', receipient);
+        .replaceFirst('merchantCode', receipient)
+        .replaceFirst('customerID', receipient);
   }
 
   static String formatUssdActionCodeForAmountOnly({

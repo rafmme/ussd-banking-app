@@ -81,7 +81,7 @@ class _ElectricityBillPaymentWidgetState
                       const Padding(
                         padding: EdgeInsets.only(bottom: 4),
                         child: Text(
-                          "Meter Number",
+                          "Meter Number / Account Number",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -95,7 +95,7 @@ class _ElectricityBillPaymentWidgetState
                           controller: _receipientController,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
-                              hintText: 'Meter Number'),
+                              hintText: 'Meter Number / Account Number'),
                           keyboardType: TextInputType.phone,
                           style: const TextStyle(
                             fontSize: 20,
@@ -200,7 +200,7 @@ class _ElectricityBillPaymentWidgetState
                                       {
                                         CreateWidget.displayDialog(
                                             context,
-                                            'Action: ${widget.ussdAction}\n\nAmount: NGN ${Util.formatAmount(_amountController.text)}\n\nMeter Number: ${_receipientController.text}\n\nElectricity Disco: $dropdownvalue\n\nDisco. Code: ${widget.discoCodes[dropdownvalue]}',
+                                            'Action: ${widget.ussdAction}\n\nAmount: NGN ${Util.formatAmount(_amountController.text)}\n\nMeter Number/Account Number: ${_receipientController.text}\n\nElectricity Disco: $dropdownvalue\n\nDisco. Code: ${widget.discoCodes[dropdownvalue]}',
                                             'Confirmation',
                                             CreateWidget.buildDialogButton(
                                                 context: context,
