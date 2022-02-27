@@ -349,14 +349,18 @@ List<Bank> banksList = [
           'action': 'Pay Electricity Bill',
           'code': '*737*50*amount*code#',
           'dialUp': 'no',
-          'phPrepaidCode': '95',
-          'phPostpaidCode': '96',
-          'ekoPrepaidCode': '151',
-          'ekoPostpaidCode': '152',
-          'ibadanPrepaidCode': '137',
-          'kanoPrepaidCode': '93',
-          'kanoPostpaidCode': '94',
+          'disco': {
+            'Choose your Area Electricity Disco.': '0',
+            'Port Harcourt Prepaid': '95',
+            'Port Harcourt Postpaid': '96',
+            'Eko Prepaid': '151',
+            'Eko Postpaid': '152',
+            'Ibadan Prepaid': '137',
+            'Kano Prepaid': '93',
+            'Kano Postpaid': '94',
+          },
           'amo': 'false',
+          'electricity': 'gtb'
         },
         {
           'action': 'LCC Toll Payments',
@@ -646,15 +650,264 @@ List<Bank> banksList = [
       name: 'Taj Bank',
       image: 'assets/images/tajbank.png',
       color: kTajBankColor,
-      ussdCode: '*894#',
-      listOfavailableBankUssdOps: [],
+      ussdCode: '*898#',
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*898#',
+        },
+        {
+          'action': 'Buy Airtime (for self)',
+          'code': '*989*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Buy Airtime (for others)',
+          'code': '*989*amount*phoneNumber#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Phone Number',
+        },
+        {
+          'action': 'Money Transfers',
+          'code': '*898*amount*accountNumber#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Account Number',
+        },
+      ],
       bankInfo: 'Taj Bank of Nigeria.'),
   Bank(
       name: 'UBA',
       image: 'assets/images/ubabank.png',
       color: kUBAColor,
       ussdCode: '*919#',
-      listOfavailableBankUssdOps: [],
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*919#',
+        },
+        {
+          'action': 'Register',
+          'code': '*919*0#',
+        },
+        {
+          'action': 'Get Bank Statement',
+          'code': '*919*21#',
+        },
+        {
+          'action': 'Check Balance',
+          'code': '*919*00#',
+        },
+        {
+          'action': 'Freeze Online Transactions',
+          'code': '*919*9#',
+        },
+        {
+          'action': 'Block Debit Card',
+          'code': '*919*10#',
+        },
+        {
+          'action': 'Generate OTP',
+          'code': '*919*8#',
+        },
+        {
+          'action': 'Retrieve BVN',
+          'code': '*919*18#',
+        },
+        {
+          'action': 'Buy Airtime (for self)',
+          'code': '*919*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Buy Airtime (for others)',
+          'code': '*919*phoneNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Phone Number',
+        },
+        {
+          'action': 'Buy Data (for self)',
+          'code': '*919*14#',
+        },
+        {
+          'action': 'Buy Data (for others)',
+          'code': '*919*14*phoneNumber#',
+          'dialUp': 'no',
+          'showText': 'Phone Number',
+        },
+        {
+          'action': 'Money Transfers (to UBA Account)',
+          'code': '*919*3*accountNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Account Number',
+        },
+        {
+          'action': 'Money Transfers (to other Banks)',
+          'code': '*919*4*accountNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Account Number',
+        },
+        {
+          'action': 'Transfer using Mobile Number',
+          'code': '*919*36#',
+        },
+        {
+          'action': 'Cardless Withdrawal',
+          'code': '*919*30*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Load UBA Prepaid Card',
+          'code': '*919*32#',
+        },
+        {
+          'action': 'Click Credit',
+          'code': '*919*28#',
+        },
+        {
+          'action': 'Make Konga Payment',
+          'code': '*919*15*refNumber#',
+          'dialUp': 'no',
+          'showText': 'Ref. ID',
+        },
+        {
+          'action': 'Smile Top-Up',
+          'code': '*919*23#',
+        },
+        {
+          'action': 'Other Bills Payment',
+          'code': '*919*5#',
+        },
+        {
+          'action': "St. Mary's Hospital Payment",
+          'code': '*919*25*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Fund Bet9ja Wallet',
+          'code': '*919*22*walletID*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Bet9ja Wallet ID',
+        },
+        {
+          'action': 'Fund BetKing Wallet',
+          'code': '*919*26*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Fund Baba Ijebu Wallet',
+          'code': '*919*26*1#',
+        },
+        {
+          'action': 'Fund Lottomania Wallet',
+          'code': '*919*26*2#',
+        },
+        {
+          'action': 'ARM Pensions',
+          'code': '*919*27*1#',
+        },
+        {
+          'action': 'Oak Pensions',
+          'code': '*919*27*2#',
+        },
+        {
+          'action': 'Check LCC e-tag balance',
+          'code': '*919*16*1#',
+        },
+        {
+          'action': 'Top-Up LCC e-tag',
+          'code': '*919*16*2#',
+        },
+        {
+          'action': 'DSTV & GOTV Payment',
+          'code': '*919*5*2#',
+        },
+        {
+          'action': 'Tax & Levies',
+          'code': '*919*13#',
+        },
+        {
+          'action': 'Purchase Event Tickets',
+          'code': '*919*7#',
+        },
+        {
+          'action': 'Airline Tickets Menu',
+          'code': '*919*12#',
+        },
+        {
+          'action': 'Ethopia Airline',
+          'code': '*919*12*071#',
+        },
+        {
+          'action': 'Africa World Airline',
+          'code': '*919*12*394#',
+        },
+        {
+          'action': 'Lufthansa Airline',
+          'code': '*919*12*220#',
+        },
+        {
+          'action': 'Egypt Airline',
+          'code': '*919*12*077#',
+        },
+        {
+          'action': 'Turkish Airline',
+          'code': '*919*12*235#',
+        },
+        {
+          'action': 'Qatar Airways',
+          'code': '*919*12*157#',
+        },
+        {
+          'action': 'British Airways',
+          'code': '*919*12*125#',
+        },
+        {
+          'action': 'KLM Royal Dutch Airline',
+          'code': '*919*12*74#',
+        },
+        {
+          'action': 'South African Airways',
+          'code': '*919*12*83#',
+        },
+        {
+          'action': 'Etihad Airways',
+          'code': '*919*12*607#',
+        },
+        {
+          'action': 'Virgin Atlantic Airline',
+          'code': '*919*12*932#',
+        },
+        {
+          'action': 'Royal Air Morocco',
+          'code': '*919*12*147#',
+        },
+        {
+          'action': 'Rwanda Air',
+          'code': '*919*12*459#',
+        },
+        {
+          'action': 'Kenya Airways',
+          'code': '*919*12*706#',
+        },
+        {
+          'action': 'Delta AirLines',
+          'code': '*919*12*6#',
+        },
+        {
+          'action': 'Air France',
+          'code': '*919*12*57#',
+        },
+        {
+          'action': 'Emirates',
+          'code': '*919*12*176#',
+        },
+      ],
       bankInfo: 'United Bank of Africa.'),
   Bank(
       name: 'Union Bank',
@@ -675,7 +928,145 @@ List<Bank> banksList = [
       image: 'assets/images/wemabank.png',
       color: kWemaBankColor,
       ussdCode: '*945#',
-      listOfavailableBankUssdOps: [],
+      listOfavailableBankUssdOps: [
+        {
+          'action': 'Main USSD Code',
+          'code': '*945#',
+        },
+        {
+          'action': 'Account Restriction',
+          'code': '*945*911#',
+        },
+        {
+          'action': 'Check Balance',
+          'code': '*945*0#',
+        },
+        {
+          'action': 'Change PIN',
+          'code': '*945*00#',
+        },
+        {
+          'action': 'Open Account',
+          'code': '*945*1#',
+        },
+        {
+          'action': 'Register on 945',
+          'code': '*945*01#',
+        },
+        {
+          'action': 'BVN Management',
+          'code': '*945*4#',
+        },
+        {
+          'action': 'Buy Airtime (for self)',
+          'code': '*945*amount#',
+          'dialUp': 'no',
+        },
+        {
+          'action': 'Buy Airtime (for others)',
+          'code': '*945*phoneNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Phone Number',
+        },
+        {
+          'action': 'Buy Data',
+          'code': '*945*9#',
+        },
+        {
+          'action': 'Money Transfers',
+          'code': '*945*accountNumber*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Account Number',
+        },
+        {
+          'action': 'Quick Loan Code',
+          'code': '*945*65#',
+        },
+        {
+          'action': 'Cable TV Menu',
+          'code': '*945*10#',
+        },
+        {
+          'action': 'DSTV',
+          'code': '*945*11*smartCardNumber#',
+          'dialUp': 'no',
+          'showText': 'Smart Card Number',
+        },
+        {
+          'action': 'GOTV',
+          'code': '*945*12*smartCardNumber#',
+          'dialUp': 'no',
+          'showText': 'Smart Card Number',
+        },
+        {
+          'action': 'Startimes',
+          'code': '*945*13*smartCardNumber#',
+          'dialUp': 'no',
+          'showText': 'Smart Card Number',
+        },
+        {
+          'action': 'Internet Service Menu',
+          'code': '*945*15#',
+        },
+        {
+          'action': 'Smile',
+          'code': '*945*16#',
+        },
+        {
+          'action': 'Spectranet',
+          'code': '*945*18#',
+        },
+        {
+          'action': 'Pay Electricity Bill',
+          'code': '*945*code*meterNumber*amount#',
+          'dialUp': 'no',
+          'disco': {
+            'Choose your Area Electricity Disco.': '0',
+            'Eko': '25',
+            'Ikeja': '26',
+            'Ibadan': '27',
+            'Abuja': '28',
+            'Enugu': '29',
+            'Jos': '30',
+            'Kaduna': '31',
+            'Kano': '32',
+            'Port Harcourt': '33',
+          },
+          'amo': 'false',
+          'electricity': 'wema'
+        },
+        {
+          'action': 'Electricity Bill Menu',
+          'code': '*945*24#',
+        },
+        {
+          'action': 'WAEC (Check Result)',
+          'code': '*945*70#',
+        },
+        {
+          'action': 'JAMB (Check Result)',
+          'code': '*945*71#',
+        },
+        {
+          'action': 'Lagos State Collection',
+          'code': '*945*40#',
+        },
+        {
+          'action': 'MCash Payment',
+          'code': '*945*57*merchantCode*amount#',
+          'dialUp': 'no',
+          'amo': 'false',
+          'showText': 'Merchant Code',
+        },
+        {
+          'action': 'CoralPay Payment',
+          'code': '*945*000*refNumber#',
+          'dialUp': 'no',
+          'showText': 'Ref. Number',
+        },
+      ],
       bankInfo: 'Wema Bank of Nigeria.'),
   Bank(
       name: 'Zenith Bank',

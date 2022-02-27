@@ -150,13 +150,16 @@ class _ReceipientAmountWidgetState extends State<ReceipientAmountWidget> {
                                           context: context,
                                           isInfoDialog: false,
                                           ussdCode: Util.formatUssdActionCode(
-                                              ussdCode: widget.ussdCode,
-                                              amount: Util.formatAmount(
-                                                  _amountController.text),
-                                              receipient:
-                                                  Util.formatPhoneNumber(
-                                                _receipientController.text,
-                                              )))),
+                                            ussdCode: widget.ussdCode,
+                                            amount: Util.formatAmount(
+                                                _amountController.text),
+                                            receipient: widget.ussdShowText ==
+                                                    'Phone Number'
+                                                ? Util.formatPhoneNumber(
+                                                    _receipientController.text,
+                                                  )
+                                                : _receipientController.text,
+                                          ))),
                                 }
                             },
                         child: Row(

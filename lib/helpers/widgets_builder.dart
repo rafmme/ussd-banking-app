@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ussd_app/helpers/util.dart';
 import 'package:ussd_app/widgets/ussd_action/amount_only.dart';
+import 'package:ussd_app/widgets/ussd_action/electricity_bill_payment.dart';
 import 'package:ussd_app/widgets/ussd_action/receipient_amount.dart';
 
 class CreateWidget {
@@ -11,6 +12,8 @@ class CreateWidget {
     required String image,
     required bool amo,
     String? ussdShowText,
+    String? electricityBill,
+    Map<String, String>? discoCodes,
   }) {
     final Widget ussdActionWidget = amo
         ? AmountOnlyWidget(
@@ -18,11 +21,18 @@ class CreateWidget {
             ussdCode: ussdCode!,
             ussdShowText: ussdShowText,
           )
-        : ReceipientAmountWidget(
-            ussdAction: ussdAction!,
-            ussdCode: ussdCode!,
-            ussdShowText: ussdShowText,
-          );
+        : electricityBill != null
+            ? ElectricityBillPaymentWidget(
+                ussdAction: ussdAction!,
+                ussdCode: ussdCode!,
+                electricityBill: electricityBill,
+                discoCodes: discoCodes!,
+              )
+            : ReceipientAmountWidget(
+                ussdAction: ussdAction!,
+                ussdCode: ussdCode!,
+                ussdShowText: ussdShowText,
+              );
 
     return showModalBottomSheet<void>(
       context: context,
@@ -50,7 +60,7 @@ class CreateWidget {
                       height: 20,
                     ),
                     Text(
-                      '$ussdAction',
+                      ussdAction,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,

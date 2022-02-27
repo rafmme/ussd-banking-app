@@ -10,6 +10,6 @@ class Bank {
       required this.bankInfo});
 
   final String name, ussdCode, bankInfo, image;
-  final List<Map<String, String>> listOfavailableBankUssdOps;
+  final List<Map<String, dynamic>> listOfavailableBankUssdOps;
   final Color color;
 }

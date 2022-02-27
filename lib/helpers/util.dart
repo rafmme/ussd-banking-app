@@ -46,6 +46,24 @@ class Util {
         .replaceFirst('refNumber', amount);
   }
 
+  static String formatUssdActionCodeForElectricityBillPayment({
+    required String ussdCode,
+    required String amount,
+    required String discoCode,
+    String? meterNumber,
+  }) {
+    if (meterNumber != null) {
+      return ussdCode
+          .replaceFirst('amount', amount)
+          .replaceFirst('meterNumber', meterNumber)
+          .replaceFirst('code', discoCode);
+    }
+
+    return ussdCode
+        .replaceFirst('amount', amount)
+        .replaceFirst('code', discoCode);
+  }
+
   static Future<Receipient> importContact() async {
     final ContactPicker _contactPicker = ContactPicker();
     Contact contact = await _contactPicker.selectContact();

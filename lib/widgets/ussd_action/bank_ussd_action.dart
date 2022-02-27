@@ -12,7 +12,7 @@ class BankUssdActionWidget extends StatelessWidget {
   }) : super(key: key);
 
   final Bank bank;
-  final Map<String, String> ussdActionData;
+  final Map<String, dynamic> ussdActionData;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,19 @@ class BankUssdActionWidget extends StatelessWidget {
         child: TextButton(
       onPressed: () {
         if (ussdActionData['dialUp'] != null && ussdActionData['amo'] != null) {
+          if (ussdActionData['electricity'] != null) {
+            CreateWidget.createModalBottomSheet(
+              context: context,
+              ussdAction: ussdAction,
+              ussdCode: ussdCode,
+              image: bank.image,
+              amo: false,
+              electricityBill: ussdActionData['electricity'],
+              discoCodes: ussdActionData['disco'],
+            );
+            return;
+          }
+
           CreateWidget.createModalBottomSheet(
             context: context,
             ussdAction: ussdAction,

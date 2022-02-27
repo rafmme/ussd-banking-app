@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ussd_app/helpers/constants.dart';
 
 class TransactionsHistoryPageWidget extends StatelessWidget {
   const TransactionsHistoryPageWidget({Key? key}) : super(key: key);

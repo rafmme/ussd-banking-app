@@ -63,7 +63,7 @@ class BankScreenWidget extends StatelessWidget {
                                 childAspectRatio: 1,
                               ),
                               itemBuilder: (context, index) {
-                                Map<String, String> ussdActionData =
+                                Map<String, dynamic> ussdActionData =
                                     bank.listOfavailableBankUssdOps[index];
 
                                 return BankUssdActionWidget(

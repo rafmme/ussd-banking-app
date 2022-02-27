@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ussd_app/helpers/constants.dart';
 
 class ConfirmationAlertDialog extends StatelessWidget {
-  ConfirmationAlertDialog({Key? key, required this.message}) : super(key: key);
+  const ConfirmationAlertDialog({Key? key, required this.message})
+      : super(key: key);
 
   final String message;
-  final TextEditingController _textFieldController = TextEditingController();
 
   _displayDialog(BuildContext context) async {
     return showDialog(
