@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ussd_app/data/sql_helper.dart';
 import 'package:ussd_app/helpers/constants.dart';
 import 'package:ussd_app/helpers/widgets_builder.dart';
 import 'package:ussd_app/widgets/Home/home_page_widget.dart';
@@ -13,18 +14,40 @@ class HomeScreenWidget extends StatefulWidget {
 
 class _HomeScreenWidgetState extends State<HomeScreenWidget> {
   var _currentPage = 0;
-  final _pages = [
-    const HomePageWidget(),
-    const TransactionsHistoryPageWidget(),
-  ];
+  List<Map<String, dynamic>> _transactions = [];
+  bool _isLoading = true;
+
+  void _refreshTransactions() async {
+    final data = await SQLHelper.getUSSDTransactions();
+    setState(() {
+      _transactions = data;
+      _isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshTransactions();
+  }
 
   @override
   Widget build(BuildContext context) {
     var appBarTitle = 'USSD BANKING';
 
-    if (_currentPage != 0) {
+    if (_currentPage == 1) {
       appBarTitle = 'Transactions History';
+      _refreshTransactions();
     }
+
+    final pages = [
+      const HomePageWidget(),
+      TransactionsHistoryPageWidget(
+        transactions: _transactions,
+        isLoading: _isLoading,
+        refreshTransactionList: _refreshTransactions,
+      ),
+    ];
 
     return Scaffold(
         appBar: AppBar(
@@ -56,7 +79,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
             ],
           ),
         ),
-        body: _pages.elementAt(_currentPage),
+        body: pages.elementAt(_currentPage),
         bottomNavigationBar: BottomNavigationBar(
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),

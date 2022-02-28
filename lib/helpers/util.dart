@@ -18,7 +18,7 @@ class Util {
     }
   }
 
-  static void saveUssdTransaction({
+  static Future<int> saveUssdTransaction({
     required String ussdCode,
     String? bankName,
     String? bankImage,
@@ -29,7 +29,7 @@ class Util {
     try {
       final String url = formatUssdCode(ussdCode);
 
-      await SQLHelper.addUSSDTransaction(
+      return await SQLHelper.addUSSDTransaction(
         bankName: bankName!,
         bankImage: bankImage!,
         receipient: receipient!,

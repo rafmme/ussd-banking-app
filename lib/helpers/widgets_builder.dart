@@ -114,6 +114,7 @@ class CreateWidget {
     String? bankImage,
     String? receipient,
     String? amount,
+    bool? dontSave,
   }) {
     if (isInfoDialog == true) {
       return [
@@ -140,22 +141,24 @@ class CreateWidget {
       ),
       const Spacer(),
       TextButton(
-        onPressed: () {
+        onPressed: () async {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
-
-          Util.saveUssdTransaction(
-            ussdCode: ussdCode!,
-            bankImage: bankImage!,
-            bankName: bankName!,
-            ussdAction: ussdAction!,
-            receipient: receipient,
-            amount: amount,
-          );
 
           Util.dialUssdCode(
-            ussdCode: ussdCode,
+            ussdCode: ussdCode!,
           );
+
+          if (dontSave != true) {
+            await Util.saveUssdTransaction(
+              ussdCode: ussdCode,
+              bankImage: bankImage,
+              bankName: bankName,
+              ussdAction: ussdAction,
+              receipient: receipient,
+              amount: amount,
+            );
+          }
         },
         child: Row(children: const [
           Icon(

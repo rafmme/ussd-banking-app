@@ -17,6 +17,15 @@ class SQLHelper {
     );
   }
 
+  static Future<void> clearTable() async {
+    final db = await SQLHelper.db();
+    try {
+      await db.delete("transactions");
+    } catch (err) {
+      debugPrint("Something went wrong clearing the table: $err");
+    }
+  }
+
   static Future<int> addUSSDTransaction({
     required String bankName,
     required String bankImage,
