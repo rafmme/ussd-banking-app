@@ -53,6 +53,7 @@ class BankUssdActionWidget extends StatelessWidget {
                 amo: false,
                 electricityBill: ussdActionData['electricity'],
                 discoCodes: ussdActionData['disco'],
+                bankName: bank.name,
               );
               return;
             }
@@ -64,6 +65,7 @@ class BankUssdActionWidget extends StatelessWidget {
               image: bank.image,
               amo: false,
               ussdShowText: ussdShowText,
+              bankName: bank.name,
             );
             return;
           } else if (ussdActionData['dialUp'] != null) {
@@ -74,11 +76,12 @@ class BankUssdActionWidget extends StatelessWidget {
               image: bank.image,
               amo: true,
               ussdShowText: ussdShowText,
+              bankName: bank.name,
             );
             return;
           }
 
-          Util.dialUssdCode(ussdCode!);
+          Util.dialUssdCode(ussdCode: ussdCode!);
         },
         child: SizedBox(
           width: 200,

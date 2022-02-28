@@ -10,11 +10,15 @@ class AmountOnlyWidget extends StatelessWidget {
     required this.ussdCode,
     required this.ussdAction,
     this.ussdShowText,
+    this.bankName,
+    this.bankImage,
   }) : super(key: key);
 
   final String ussdAction;
   final String ussdCode;
   final String? ussdShowText;
+  final String? bankName;
+  final String? bankImage;
   final TextEditingController _amountOnlyController = TextEditingController();
 
   @override
@@ -102,6 +106,17 @@ class AmountOnlyWidget extends StatelessWidget {
                                             CreateWidget.buildDialogButton(
                                                 context: context,
                                                 isInfoDialog: false,
+                                                amount: '',
+                                                bankImage: bankImage,
+                                                bankName: bankName,
+                                                receipient: ussdShowText ==
+                                                        'Phone Number'
+                                                    ? Util.formatPhoneNumber(
+                                                        _amountOnlyController
+                                                            .text)
+                                                    : _amountOnlyController
+                                                        .text,
+                                                ussdAction: ussdAction,
                                                 ussdCode: Util
                                                     .formatUssdActionCodeForAmountOnly(
                                                   ussdCode: ussdCode,
@@ -149,6 +164,12 @@ class AmountOnlyWidget extends StatelessWidget {
                                         CreateWidget.buildDialogButton(
                                             context: context,
                                             isInfoDialog: false,
+                                            amount: Util.formatAmount(
+                                                _amountOnlyController.text),
+                                            bankImage: bankImage,
+                                            bankName: bankName,
+                                            receipient: '',
+                                            ussdAction: ussdAction,
                                             ussdCode: Util
                                                 .formatUssdActionCodeForAmountOnly(
                                               ussdCode: ussdCode,

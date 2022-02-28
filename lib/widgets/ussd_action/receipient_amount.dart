@@ -5,16 +5,20 @@ import 'package:ussd_app/helpers/widgets_builder.dart';
 import 'package:ussd_app/models/receipient.dart';
 
 class ReceipientAmountWidget extends StatefulWidget {
-  const ReceipientAmountWidget(
-      {Key? key,
-      required this.ussdAction,
-      required this.ussdCode,
-      this.ussdShowText})
-      : super(key: key);
+  const ReceipientAmountWidget({
+    Key? key,
+    required this.ussdAction,
+    required this.ussdCode,
+    this.ussdShowText,
+    this.bankName,
+    this.bankImage,
+  }) : super(key: key);
 
   final String ussdAction;
   final String ussdCode;
   final String? ussdShowText;
+  final String? bankImage;
+  final String? bankName;
 
   @override
   _ReceipientAmountWidgetState createState() => _ReceipientAmountWidgetState();
@@ -149,6 +153,13 @@ class _ReceipientAmountWidgetState extends State<ReceipientAmountWidget> {
                                       CreateWidget.buildDialogButton(
                                           context: context,
                                           isInfoDialog: false,
+                                          amount: Util.formatAmount(
+                                              _amountController.text),
+                                          bankImage: widget.bankImage,
+                                          bankName: widget.bankName,
+                                          receipient:
+                                              _receipientController.text,
+                                          ussdAction: widget.ussdAction,
                                           ussdCode: Util.formatUssdActionCode(
                                             ussdCode: widget.ussdCode,
                                             amount: Util.formatAmount(

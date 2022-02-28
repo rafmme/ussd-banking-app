@@ -10,6 +10,7 @@ class CreateWidget {
     String? ussdAction,
     String? ussdCode,
     required String image,
+    required String bankName,
     required bool amo,
     String? ussdShowText,
     String? electricityBill,
@@ -20,6 +21,8 @@ class CreateWidget {
             ussdAction: ussdAction!,
             ussdCode: ussdCode!,
             ussdShowText: ussdShowText,
+            bankImage: image,
+            bankName: bankName,
           )
         : electricityBill != null
             ? ElectricityBillPaymentWidget(
@@ -27,11 +30,15 @@ class CreateWidget {
                 ussdCode: ussdCode!,
                 electricityBill: electricityBill,
                 discoCodes: discoCodes!,
+                bankImage: image,
+                bankName: bankName,
               )
             : ReceipientAmountWidget(
                 ussdAction: ussdAction!,
                 ussdCode: ussdCode!,
                 ussdShowText: ussdShowText,
+                bankImage: image,
+                bankName: bankName,
               );
 
     return showModalBottomSheet<void>(
@@ -98,10 +105,16 @@ class CreateWidget {
         });
   }
 
-  static List<Widget> buildDialogButton(
-      {required BuildContext context,
-      required bool isInfoDialog,
-      String? ussdCode}) {
+  static List<Widget> buildDialogButton({
+    required BuildContext context,
+    required bool isInfoDialog,
+    String? ussdCode,
+    String? ussdAction,
+    String? bankName,
+    String? bankImage,
+    String? receipient,
+    String? amount,
+  }) {
     if (isInfoDialog == true) {
       return [
         TextButton(
@@ -130,7 +143,19 @@ class CreateWidget {
         onPressed: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
-          Util.dialUssdCode(ussdCode!);
+
+          Util.saveUssdTransaction(
+            ussdCode: ussdCode!,
+            bankImage: bankImage!,
+            bankName: bankName!,
+            ussdAction: ussdAction!,
+            receipient: receipient,
+            amount: amount,
+          );
+
+          Util.dialUssdCode(
+            ussdCode: ussdCode,
+          );
         },
         child: Row(children: const [
           Icon(

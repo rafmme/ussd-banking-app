@@ -11,11 +11,15 @@ class ElectricityBillPaymentWidget extends StatefulWidget {
     required this.ussdCode,
     required this.electricityBill,
     required this.discoCodes,
+    this.bankName,
+    this.bankImage,
   }) : super(key: key);
 
   final String ussdAction;
   final String ussdCode;
   final String electricityBill;
+  final String? bankName;
+  final String? bankImage;
   final Map<String, String> discoCodes;
 
   @override
@@ -205,6 +209,13 @@ class _ElectricityBillPaymentWidgetState
                                             CreateWidget.buildDialogButton(
                                                 context: context,
                                                 isInfoDialog: false,
+                                                amount: Util.formatAmount(
+                                                    _amountController.text),
+                                                bankImage: widget.bankImage,
+                                                bankName: widget.bankName,
+                                                receipient:
+                                                    '${_receipientController.text}\nDisco: $dropdownvalue',
+                                                ussdAction: widget.ussdAction,
                                                 ussdCode: Util
                                                     .formatUssdActionCodeForElectricityBillPayment(
                                                   ussdCode: widget.ussdCode,
@@ -255,6 +266,13 @@ class _ElectricityBillPaymentWidgetState
                                         CreateWidget.buildDialogButton(
                                             context: context,
                                             isInfoDialog: false,
+                                            amount: Util.formatAmount(
+                                                _amountController.text),
+                                            bankImage: widget.bankImage,
+                                            bankName: widget.bankName,
+                                            receipient:
+                                                '${_receipientController.text}\nDisco: $dropdownvalue',
+                                            ussdAction: widget.ussdAction,
                                             ussdCode: Util
                                                 .formatUssdActionCodeForElectricityBillPayment(
                                               ussdCode: widget.ussdCode,

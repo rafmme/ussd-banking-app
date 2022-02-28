@@ -1,14 +1,14 @@
 import 'package:contact_picker/contact_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:ussd_app/data/sql_helper.dart';
 import 'package:ussd_app/models/receipient.dart';
 
 class Util {
-  static void dialUssdCode(String ussdCode) async {
+  static void dialUssdCode({
+    required String ussdCode,
+  }) async {
     try {
-      // ignore: unnecessary_string_escapes
-      final String formatedUssdCode =
-          ussdCode.replaceAll(',', '').replaceAll(RegExp(r'#'), '\%23');
-      final String url = 'tel:$formatedUssdCode';
+      final String url = formatUssdCode(ussdCode);
 
       if (await canLaunch(url)) {
         await launch(url);
@@ -16,6 +16,38 @@ class Util {
     } catch (e) {
       throw 'Unable to dial ussd code $ussdCode';
     }
+  }
+
+  static void saveUssdTransaction({
+    required String ussdCode,
+    String? bankName,
+    String? bankImage,
+    String? receipient,
+    String? amount,
+    String? ussdAction,
+  }) async {
+    try {
+      final String url = formatUssdCode(ussdCode);
+
+      await SQLHelper.addUSSDTransaction(
+        bankName: bankName!,
+        bankImage: bankImage!,
+        receipient: receipient!,
+        amount: amount!,
+        ussdAction: ussdAction!,
+        ussdCode: url,
+      );
+    } catch (e) {
+      throw 'Unable to save $ussdAction transaction';
+    }
+  }
+
+  static String formatUssdCode(String ussdCode) {
+    // ignore: unnecessary_string_escapes
+    final String formatedUssdCode =
+        ussdCode.replaceAll(',', '').replaceAll(RegExp(r'#'), '\%23');
+    final String url = 'tel:$formatedUssdCode';
+    return url;
   }
 
   static String formatUssdActionCode({
