@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd_app/data/sql_helper.dart';
+import 'package:ussd_app/helpers/widgets_builder.dart';
 import 'package:ussd_app/widgets/transaction_history/transaction.dart';
 
 class TransactionsHistoryPageWidget extends StatelessWidget {
@@ -13,6 +14,11 @@ class TransactionsHistoryPageWidget extends StatelessWidget {
   final List<Map<String, dynamic>> transactions;
   final bool isLoading;
   final Function refreshTransactionList;
+
+  void _clearAllTransactionsHistory() async {
+    await SQLHelper.clearTable();
+    refreshTransactionList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +51,18 @@ class TransactionsHistoryPageWidget extends StatelessWidget {
                       ),
                       const Spacer(),
                       TextButton(
-                        onPressed: () async {
-                          await SQLHelper.clearTable();
-                          refreshTransactionList();
+                        onPressed: () {
+                          CreateWidget.displayDialog(
+                            context,
+                            'This will clear all your transactions history list on the app\n\nClick Proceed button to continue.',
+                            'Confirm Deletion of Transactions history',
+                            CreateWidget.buildDialogButton(
+                              context: context,
+                              isInfoDialog: false,
+                              isConfirmation: true,
+                              executeFunction: _clearAllTransactionsHistory,
+                            ),
+                          );
                         },
                         child: const Text(
                           'Clear All',
@@ -66,7 +81,10 @@ class TransactionsHistoryPageWidget extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       final transaction = transactions[index];
-                      return Transaction(transaction: transaction);
+                      return Transaction(
+                        transaction: transaction,
+                        refreshTransactionList: refreshTransactionList,
+                      );
                     },
                   ),
                 ),

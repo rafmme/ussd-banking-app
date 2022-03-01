@@ -115,6 +115,9 @@ class CreateWidget {
     String? receipient,
     String? amount,
     bool? dontSave,
+    bool? isConfirmation,
+    Function? executeFunction,
+    int? id,
   }) {
     if (isInfoDialog == true) {
       return [
@@ -129,6 +132,57 @@ class CreateWidget {
         )
       ];
     }
+
+    if (isInfoDialog == false && isConfirmation == true && id != null) {
+      return [
+        TextButton(
+          child: const Text(
+            'Cancel',
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        const Spacer(),
+        TextButton(
+          onPressed: () {
+            executeFunction!(id);
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Proceed',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        )
+      ];
+    }
+
+    if (isInfoDialog == false && isConfirmation == true) {
+      return [
+        TextButton(
+          child: const Text(
+            'Cancel',
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        const Spacer(),
+        TextButton(
+          onPressed: () {
+            executeFunction!();
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Proceed',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        )
+      ];
+    }
+
     return [
       TextButton(
         child: const Text(
