@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ussd_app/helpers/constants.dart';
 import 'package:ussd_app/helpers/util.dart';
 import 'package:ussd_app/widgets/ussd_action/amount_only.dart';
 import 'package:ussd_app/widgets/ussd_action/electricity_bill_payment.dart';
@@ -90,7 +91,10 @@ class CreateWidget {
           return AlertDialog(
             title: Text(
               title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: kFirstBankColor,
+              ),
             ),
             content: Text(
               message,
@@ -196,14 +200,21 @@ class CreateWidget {
       const Spacer(),
       TextButton(
         onPressed: () async {
-          Navigator.of(context).pop();
-          Navigator.of(context).pop();
+          if (dontSave == true) {
+            Navigator.of(context).pop();
 
-          Util.dialUssdCode(
-            ussdCode: ussdCode!,
-          );
+            Util.dialUssdCode(
+              ussdCode: ussdCode!,
+            );
+            return;
+          } else {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
 
-          if (dontSave != true) {
+            Util.dialUssdCode(
+              ussdCode: ussdCode!,
+            );
+
             await Util.saveUssdTransaction(
               ussdCode: ussdCode,
               bankImage: bankImage,

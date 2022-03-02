@@ -19,18 +19,16 @@ class BankCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: bank.color,
-                borderRadius: BorderRadius.circular(8),
-                boxShadow: const [
-                  BoxShadow(blurRadius: 2, blurStyle: BlurStyle.solid)
-                ],
-              ),
-              child: Hero(
-                tag: bank.name,
-                child: Image.asset(bank.image),
+            child: Card(
+              color: bank.color,
+              shadowColor: bank.color,
+              elevation: 10,
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Hero(
+                  tag: bank.name,
+                  child: Image.asset(bank.image),
+                ),
               ),
             ),
           ),

@@ -179,10 +179,6 @@ class _ElectricityBillPaymentWidgetState
                             },
                             child: Row(
                               children: const [
-                                Icon(
-                                  Icons.contact_phone_outlined,
-                                  color: kHomeScreenAppBarIconColor,
-                                ),
                                 Text('Open Phonebook',
                                     style: TextStyle(
                                       color: kHomeScreenAppBarIconColor,

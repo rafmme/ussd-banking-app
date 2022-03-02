@@ -70,7 +70,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 onTap: () {
                   CreateWidget.displayDialog(
                       context,
-                      "USSD Banking made easy for Nigerians.\n\nThis app helps you perform banking transactions via your bank's USSD platform without the need to memorize the various USSD codes.\n\nBanking on the dial 📞",
+                      "USSD Banking made easy for Nigerians.\n\nThis app helps you perform banking transactions via your bank's USSD platform without the need to memorize the various USSD codes.\n\n📞 Bank on the dial! 😃",
                       '🇳🇬 USSD Banking App',
                       CreateWidget.buildDialogButton(
                           context: context, isInfoDialog: true));

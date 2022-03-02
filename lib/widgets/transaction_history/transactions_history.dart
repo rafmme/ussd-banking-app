@@ -47,6 +47,7 @@ class TransactionsHistoryPageWidget extends StatelessWidget {
                         'Transactions List',
                         style: TextStyle(
                           fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       const Spacer(),
@@ -68,6 +69,7 @@ class TransactionsHistoryPageWidget extends StatelessWidget {
                           'Clear All',
                           style: TextStyle(
                             fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),

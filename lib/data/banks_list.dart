@@ -691,7 +691,7 @@ List<Bank> banksList = [
       bankInfo:
           'Stanbic IBTC Holdings PLC\nNSE: STANBIC\n\nHeadquarters: I.B.T.C. Place, Walter Carrington Crescent, Victoria Island, Lagos State, Nigeria\n\nhttps://www.stanbicibtc.com'),
   Bank(
-      name: 'Standard Chartered',
+      name: 'S C Bank',
       image: 'assets/images/standardbank.png',
       color: kStandardCharteredBankColor,
       ussdCode: '*977#',

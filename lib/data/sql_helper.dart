@@ -50,7 +50,7 @@ class SQLHelper {
 
   static Future<List<Map<String, dynamic>>> getUSSDTransactions() async {
     final db = await SQLHelper.db();
-    return db.query('transactions', orderBy: "id");
+    return db.query('transactions', orderBy: "id DESC");
   }
 
   static Future<List<Map<String, dynamic>>> getUSSDTransaction(int id) async {

@@ -43,7 +43,7 @@ class Transaction extends StatelessWidget {
             (_) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  duration: const Duration(seconds: 8),
+                  duration: const Duration(seconds: 3),
                   content: Text(
                     "$ussdCode\n\n${transaction['ussdAction']} USSD Code has been copied to your clipboard!",
                     style: const TextStyle(
