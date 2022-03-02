@@ -165,7 +165,8 @@ class _ElectricityBillPaymentWidgetState
                     child: Row(
                       children: [
                         SizedBox(
-                          width: size.width * 0.47,
+                          width: size.width * 0.49,
+                          height: 45,
                           child: ElevatedButton(
                             onPressed: () async {
                               Receipient userContact =
@@ -179,6 +180,9 @@ class _ElectricityBillPaymentWidgetState
                             },
                             child: Row(
                               children: const [
+                                Icon(
+                                  Icons.contact_page_rounded,
+                                ),
                                 Text('Open Phonebook',
                                     style: TextStyle(
                                       color: kHomeScreenAppBarIconColor,
@@ -190,7 +194,8 @@ class _ElectricityBillPaymentWidgetState
                         ),
                         const Spacer(),
                         SizedBox(
-                          width: size.width * 0.33,
+                          width: size.width * 0.31,
+                          height: 45,
                           child: ElevatedButton(
                               onPressed: () => {
                                     if (_amountController.text.isNotEmpty &&

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ussd_app/data/sql_helper.dart';
+import 'package:ussd_app/helpers/constants.dart';
 import 'package:ussd_app/helpers/widgets_builder.dart';
 
 class Transaction extends StatelessWidget {
@@ -28,7 +29,7 @@ class Transaction extends StatelessWidget {
             : "${transaction['amount']}";
 
     return Card(
-      elevation: 8,
+      elevation: 1.5,
       margin: const EdgeInsets.only(left: 17, right: 17, bottom: 8),
       child: ListTile(
         contentPadding: const EdgeInsets.all(10),
@@ -43,7 +44,7 @@ class Transaction extends StatelessWidget {
             (_) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  duration: const Duration(seconds: 3),
+                  duration: const Duration(seconds: 1),
                   content: Text(
                     "$ussdCode\n\n${transaction['ussdAction']} USSD Code has been copied to your clipboard!",
                     style: const TextStyle(
@@ -83,59 +84,54 @@ class Transaction extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        trailing: Column(
-          children: [
-            SizedBox(
-              width: 50,
-              height: 30,
-              child: TextButton(
-                child: const Icon(Icons.call_sharp),
-                onPressed: () {
-                  CreateWidget.displayDialog(
+        trailing: SizedBox(
+          width: 97,
+          child: Container(
+            margin: const EdgeInsets.only(
+              top: 20,
+            ),
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    CreateWidget.displayDialog(
                       context,
-                      'Action: ${transaction['ussdAction']}\n\nDetails: $details',
-                      'Confirmation',
+                      'This will delete this transaction from your transactions history list on the app\n\nClick Proceed button to continue.',
+                      'Confirm Deletion',
                       CreateWidget.buildDialogButton(
                         context: context,
                         isInfoDialog: false,
-                        ussdCode:
-                            '${transaction['ussdCode']}'.replaceAll('tel:', ''),
-                        dontSave: true,
-                      ));
-                },
-              ),
-            ),
-            const Spacer(
-              flex: 2,
-            ),
-            const Spacer(
-              flex: 2,
-            ),
-            SizedBox(
-              width: 50,
-              height: 26,
-              child: TextButton(
-                child: const Icon(
-                  Icons.delete_forever_sharp,
-                  color: Colors.red,
+                        isConfirmation: true,
+                        executeFunction: _deleteTransaction,
+                        id: transaction['id'],
+                      ),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.delete_forever_sharp,
+                    color: Colors.red,
+                  ),
                 ),
-                onPressed: () {
-                  CreateWidget.displayDialog(
-                    context,
-                    'This will delete this transaction from your transactions history list on the app\n\nClick Proceed button to continue.',
-                    'Confirm Deletion',
-                    CreateWidget.buildDialogButton(
-                      context: context,
-                      isInfoDialog: false,
-                      isConfirmation: true,
-                      executeFunction: _deleteTransaction,
-                      id: transaction['id'],
-                    ),
-                  );
-                },
-              ),
+                IconButton(
+                  onPressed: () {
+                    CreateWidget.displayDialog(
+                        context,
+                        'Action: ${transaction['ussdAction']}\n\nDetails: $details',
+                        'Confirmation',
+                        CreateWidget.buildDialogButton(
+                          context: context,
+                          isInfoDialog: false,
+                          ussdCode: '${transaction['ussdCode']}'
+                              .replaceAll('tel:', ''),
+                          dontSave: true,
+                        ));
+                  },
+                  icon: const Icon(Icons.call_sharp),
+                  color: kHoomeScreenAppBarColor,
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

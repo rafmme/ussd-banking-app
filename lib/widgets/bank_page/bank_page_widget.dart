@@ -53,22 +53,20 @@ class BankScreenWidget extends StatelessWidget {
                         margin: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: 420,
-                          child: GridView.builder(
-                              itemCount: bank.listOfavailableBankUssdOps.length,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                mainAxisSpacing: 0,
-                                crossAxisSpacing: 0,
-                                childAspectRatio: 1,
-                              ),
-                              itemBuilder: (context, index) {
-                                Map<String, dynamic> ussdActionData =
-                                    bank.listOfavailableBankUssdOps[index];
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: bank.listOfavailableBankUssdOps.length,
+                            itemBuilder: (context, index) {
+                              Map<String, dynamic> ussdActionData =
+                                  bank.listOfavailableBankUssdOps[index];
 
-                                return BankUssdActionWidget(
-                                    bank: bank, ussdActionData: ussdActionData);
-                              }),
+                              return BankUssdActionWidget(
+                                index: index,
+                                bank: bank,
+                                ussdActionData: ussdActionData,
+                              );
+                            },
+                          ),
                         ),
                       )
                     ],

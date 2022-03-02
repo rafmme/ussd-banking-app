@@ -22,8 +22,8 @@ class HomePageWidget extends StatelessWidget {
                 itemCount: banksList.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 2,
+                  crossAxisSpacing: 2,
                   childAspectRatio: 0.75,
                 ),
                 itemBuilder: (context, index) => GridTile(

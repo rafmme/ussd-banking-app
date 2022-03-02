@@ -65,9 +65,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 ),
               ),
               const Spacer(),
-              GestureDetector(
-                child: const Icon(Icons.info_outline_rounded),
-                onTap: () {
+              IconButton(
+                icon: const Icon(Icons.info_outline_rounded),
+                onPressed: () {
                   CreateWidget.displayDialog(
                       context,
                       "USSD Banking made easy for Nigerians.\n\nThis app helps you perform banking transactions via your bank's USSD platform without the need to memorize the various USSD codes.\n\n📞 Bank on the dial! 😃",

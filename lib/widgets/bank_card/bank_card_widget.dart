@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ussd_app/helpers/util.dart';
 import 'package:ussd_app/models/bank.dart';
 
 class BankCard extends StatelessWidget {
@@ -15,6 +16,11 @@ class BankCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => click(),
+      onLongPress: () {
+        Util.dialUssdCode(
+          ussdCode: bank.ussdCode,
+        );
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -22,7 +28,7 @@ class BankCard extends StatelessWidget {
             child: Card(
               color: bank.color,
               shadowColor: bank.color,
-              elevation: 10,
+              elevation: 8,
               child: Container(
                 padding: const EdgeInsets.all(10),
                 child: Hero(

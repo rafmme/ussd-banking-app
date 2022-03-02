@@ -68,7 +68,7 @@ class CreateWidget {
                       height: 20,
                     ),
                     Text(
-                      ussdAction,
+                      ussdAction.replaceFirst('\n', ' '),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,

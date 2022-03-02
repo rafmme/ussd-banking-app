@@ -27,9 +27,9 @@ class BankScreen extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            GestureDetector(
-              child: const Icon(Icons.info_outline_rounded),
-              onTap: () {
+            IconButton(
+              icon: const Icon(Icons.info_outline_rounded),
+              onPressed: () {
                 CreateWidget.displayDialog(
                     context,
                     bank.bankInfo,
