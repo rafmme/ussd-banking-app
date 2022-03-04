@@ -14,7 +14,7 @@ class BankCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () => click(),
       onLongPress: () {
         Util.dialUssdCode(
@@ -28,7 +28,7 @@ class BankCard extends StatelessWidget {
             child: Card(
               color: bank.color,
               shadowColor: bank.color,
-              elevation: 8,
+              elevation: 1.618,
               child: Container(
                 padding: const EdgeInsets.all(10),
                 child: Hero(
