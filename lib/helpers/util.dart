@@ -1,4 +1,9 @@
+import 'dart:io';
+
 import 'package:contact_picker/contact_picker.dart';
+import 'package:flutter_share/flutter_share.dart';
+import 'package:intent/action.dart' as android_action;
+import 'package:intent/intent.dart' as android_intent;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:ussd_app/data/sql_helper.dart';
 import 'package:ussd_app/models/receipient.dart';
@@ -10,12 +15,38 @@ class Util {
     try {
       final String url = formatUssdCode(ussdCode);
 
+      if (Platform.isAndroid) {
+        android_intent.Intent()
+          ..setAction(android_action.Action.ACTION_CALL)
+          ..setData(Uri(scheme: 'tel', path: url))
+          ..startActivity().catchError((e) async {
+            print(e);
+
+            if (await canLaunch(url)) {
+              await launch(url);
+            }
+          });
+        return;
+      }
+
       if (await canLaunch(url)) {
         await launch(url);
       }
     } catch (e) {
       throw 'Unable to dial ussd code $ussdCode';
     }
+  }
+
+  static void shareUSSDCode({
+    required String bankName,
+    required String ussdCode,
+    required String ussdAction,
+  }) {
+    FlutterShare.share(
+      title: "$bankName's $ussdAction USSD Code",
+      text: "$bankName's $ussdAction USSD Code\n$ussdCode",
+      linkUrl: 'https://github.com/rafmme',
+    );
   }
 
   static Future<int> saveUssdTransaction({

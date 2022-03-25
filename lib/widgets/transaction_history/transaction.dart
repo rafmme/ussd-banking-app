@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ussd_app/data/sql_helper.dart';
 import 'package:ussd_app/helpers/constants.dart';
 import 'package:ussd_app/helpers/widgets_builder.dart';
@@ -19,6 +20,24 @@ class Transaction extends StatelessWidget {
     refreshTransactionList();
   }
 
+  void _executeUSSDCode({
+    required context,
+    required String ussdCode,
+    required String ussdAction,
+    required String details,
+  }) {
+    CreateWidget.displayDialog(
+        context,
+        'Action: $ussdAction\n\nDetails: $details',
+        'Confirmation',
+        CreateWidget.buildDialogButton(
+          context: context,
+          isInfoDialog: false,
+          ussdCode: ussdCode,
+          dontSave: true,
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     final String details = "${transaction['amount']}".isNotEmpty &&
@@ -28,68 +47,78 @@ class Transaction extends StatelessWidget {
             ? "${transaction['receipient']}"
             : "${transaction['amount']}";
 
-    return Card(
-      elevation: 1.5,
-      margin: const EdgeInsets.only(left: 17, right: 17, bottom: 8),
-      child: ListTile(
-        contentPadding: const EdgeInsets.all(10),
-        onLongPress: () {
-          final String ussdCode = '${transaction['ussdCode']}'
-              .replaceAll('tel:', '')
-              .replaceAll('%23', '#');
+    final String ussdCode = '${transaction['ussdCode']}'.replaceAll('tel:', '');
+    final String ussdAction = '${transaction['ussdAction']}';
 
-          Clipboard.setData(ClipboardData(
-            text: ussdCode,
-          )).then(
-            (_) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  duration: const Duration(seconds: 1),
-                  content: Text(
-                    "$ussdCode\n\n${transaction['ussdAction']} USSD Code has been copied to your clipboard!",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
+    return Card(
+      elevation: 1.618,
+      margin: const EdgeInsets.only(left: 17, right: 17, bottom: 8),
+      child: Slidable(
+        child: ListTile(
+          contentPadding: const EdgeInsets.all(10),
+          onTap: () {
+            _executeUSSDCode(
+              context: context,
+              ussdCode: ussdCode,
+              ussdAction: ussdAction,
+              details: details,
+            );
+          },
+          onLongPress: () {
+            final String ussdCode = '${transaction['ussdCode']}'
+                .replaceAll('tel:', '')
+                .replaceAll('%23', '#');
+
+            Clipboard.setData(ClipboardData(
+              text: ussdCode,
+            )).then(
+              (_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    duration: const Duration(seconds: 1),
+                    content: Text(
+                      "$ussdCode\n\n${transaction['ussdAction']} USSD Code has been copied to your clipboard!",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          );
-        },
-        leading: Container(
-          margin: const EdgeInsets.only(
-            top: 20,
+                );
+              },
+            );
+          },
+          leading: Container(
+            margin: const EdgeInsets.only(
+              top: 20,
+            ),
+            child: Image.asset(
+              "${transaction['bankImage']}",
+              width: 30,
+              height: 35,
+            ),
           ),
-          child: Image.asset(
-            "${transaction['bankImage']}",
-            width: 30,
-            height: 35,
+          title: Container(
+            margin: const EdgeInsets.only(
+              top: 20,
+            ),
+            child: Text(
+              '${transaction['ussdAction']}\n${transaction['createdAt']}\n',
+              style: const TextStyle(
+                fontSize: 16,
+              ),
+            ),
           ),
-        ),
-        title: Container(
-          margin: const EdgeInsets.only(
-            top: 20,
-          ),
-          child: Text(
-            '${transaction['ussdAction']}\n${transaction['createdAt']}\n',
+          subtitle: Text(
+            details,
             style: const TextStyle(
               fontSize: 16,
             ),
           ),
         ),
-        subtitle: Text(
-          details,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        trailing: SizedBox(
-          width: 97,
-          child: Container(
-            margin: const EdgeInsets.only(
-              top: 20,
-            ),
+        endActionPane: ActionPane(
+          extentRatio: 0.35,
+          motion: Container(
+            decoration: const BoxDecoration(color: kUssdActionCardBg),
             child: Row(
               children: [
                 IconButton(
@@ -114,17 +143,12 @@ class Transaction extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    CreateWidget.displayDialog(
-                        context,
-                        'Action: ${transaction['ussdAction']}\n\nDetails: $details',
-                        'Confirmation',
-                        CreateWidget.buildDialogButton(
-                          context: context,
-                          isInfoDialog: false,
-                          ussdCode: '${transaction['ussdCode']}'
-                              .replaceAll('tel:', ''),
-                          dontSave: true,
-                        ));
+                    _executeUSSDCode(
+                      context: context,
+                      ussdCode: ussdCode,
+                      ussdAction: ussdAction,
+                      details: details,
+                    );
                   },
                   icon: const Icon(Icons.call_sharp),
                   color: kHoomeScreenAppBarColor,
@@ -132,6 +156,7 @@ class Transaction extends StatelessWidget {
               ],
             ),
           ),
+          children: const [],
         ),
       ),
     );

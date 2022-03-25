@@ -30,7 +30,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*901*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',
@@ -177,7 +177,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*770*phoneNumber*amount#',
           'dialUp': 'no',
           'amo': 'false',
@@ -288,7 +288,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*894*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',
@@ -394,7 +394,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*737*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',
@@ -595,7 +595,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*5045*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',
@@ -649,7 +649,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*833*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',
@@ -710,7 +710,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*977*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',
@@ -767,7 +767,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*822*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',
@@ -831,7 +831,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*989*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',
@@ -890,7 +890,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*919*phoneNumber*amount#',
           'dialUp': 'no',
           'amo': 'false',
@@ -1144,7 +1144,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*945*phoneNumber*amount#',
           'dialUp': 'no',
           'amo': 'false',
@@ -1269,7 +1269,7 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
         {
-          'action': 'Buy Airtime (for others)',
+          'action': 'Buy Airtime\n(for others)',
           'code': '*966*amount*phoneNumber#',
           'dialUp': 'no',
           'amo': 'false',

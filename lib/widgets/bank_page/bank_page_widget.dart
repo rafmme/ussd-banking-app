@@ -24,11 +24,8 @@ class BankScreenWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 30, left: 15, right: 15),
                   width: size.width,
                   decoration: const BoxDecoration(
-                      color: kBankUSSDBackground,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(24),
-                        topRight: Radius.circular(24),
-                      )),
+                    color: kBankUSSDBackground,
+                  ),
                   child: Column(
                     children: [
                       Row(

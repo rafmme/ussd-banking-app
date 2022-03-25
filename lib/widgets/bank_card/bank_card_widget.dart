@@ -14,17 +14,17 @@ class BankCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => click(),
-      onLongPress: () {
-        Util.dialUssdCode(
-          ussdCode: bank.ussdCode,
-        );
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: InkWell(
+            onTap: () => click(),
+            onLongPress: () {
+              Util.dialUssdCode(
+                ussdCode: bank.ussdCode,
+              );
+            },
             child: Card(
               color: bank.color,
               shadowColor: bank.color,
@@ -38,24 +38,24 @@ class BankCard extends StatelessWidget {
               ),
             ),
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20 / 4),
-              child: Text(
-                bank.name,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                ),
+        ),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20 / 4),
+            child: Text(
+              bank.name,
+              style: const TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          const Center(
-              child: Text(
-            '',
-          ))
-        ],
-      ),
+        ),
+        const Center(
+            child: Text(
+          '',
+        ))
+      ],
     );
   }
 }

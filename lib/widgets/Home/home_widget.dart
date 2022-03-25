@@ -61,7 +61,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 appBarTitle,
                 style: const TextStyle(
                   color: kHomeScreenAppBarIconColor,
-                  fontSize: 24,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const Spacer(),
