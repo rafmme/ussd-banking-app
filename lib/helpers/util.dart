@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:contact_picker/contact_picker.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:intent/action.dart' as android_action;
 import 'package:intent/intent.dart' as android_intent;
@@ -9,6 +10,16 @@ import 'package:ussd_app/data/sql_helper.dart';
 import 'package:ussd_app/models/receipient.dart';
 
 class Util {
+  static void openUrl(LinkableElement link) async {
+    try {
+      if (await canLaunch(link.url)) {
+        await launch(link.url);
+      }
+    } catch (e) {
+      throw 'Unable to launch ${link.url}';
+    }
+  }
+
   static void dialUssdCode({
     required String ussdCode,
   }) async {

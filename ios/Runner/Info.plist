@@ -37,6 +37,8 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 	    <string>tel</string>
+		<string>https</string>
+		<string>http</string>
 	</array>
 	<key>NSContactsUsageDescription</key>
      <string>You can import Receipient from a list of contacts.</string>

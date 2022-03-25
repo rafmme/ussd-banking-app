@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:ussd_app/helpers/constants.dart';
 import 'package:ussd_app/helpers/util.dart';
 import 'package:ussd_app/widgets/ussd_action/amount_only.dart';
@@ -96,9 +97,11 @@ class CreateWidget {
                 color: kFirstBankColor,
               ),
             ),
-            content: Text(
-              message,
+            content: Linkify(
+              text: message,
               style: const TextStyle(fontSize: 19),
+              humanize: true,
+              onOpen: Util.openUrl,
             ),
             actions: <Widget>[
               Row(

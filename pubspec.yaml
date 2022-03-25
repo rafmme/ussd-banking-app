@@ -56,7 +56,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter_icons:
-  android: true
+  android: "launcher_icon"
   ios: true
   image_path: "assets/images/logo.png"
 
