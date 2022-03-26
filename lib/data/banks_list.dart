@@ -94,7 +94,7 @@ List<Bank> banksList = [
         }
       ],
       bankInfo:
-          'Access Bank PLC\nNSE: ACCESS\n\nHeadquarters: 14/15, Prince Alaba Abiodun Oniru Road, Victoria Island, Lagos, Lagos State, Nigeria.\n\nhttps://www.accessbankplc.com/'),
+          'Access Bank PLC\nNSE: ACCESS\n\nHeadquarters: 14/15, Prince Alaba Abiodun Oniru Road, Victoria Island, Lagos, Lagos State, Nigeria.\n\nhttps://www.accessbankplc.com'),
   Bank(
       name: 'Eco Bank',
       image: 'assets/images/ecobank.png',
@@ -118,7 +118,8 @@ List<Bank> banksList = [
           'code': '*389*214#',
         },
       ],
-      bankInfo: 'First City Monumental Bank of Nigeria.'),
+      bankInfo:
+          'First City Monument Bank Ltd (FCMB)\n\nNSE: FCMB\n\nHeadquarters Lagos Island, Lagos, Lagos State, Nigeria\n\nhttps://www.fcmb.com'),
   Bank(
       name: 'Fidelity Bank',
       image: 'assets/images/fidelitybank.jpg',
@@ -263,7 +264,8 @@ List<Bank> banksList = [
           'showText': 'Account Number',
         },
       ],
-      bankInfo: 'Fidelity Bank of Nigeria.'),
+      bankInfo:
+          'Fidelity Bank of Nigeria.\n\nNSE: FIDELITY BANK\n\nHeadquarters: Lagos State, Nigeria.\n\nhttps://www.fidelitybank.ng'),
   Bank(
       name: 'First Bank',
       image: 'assets/images/firstbank.png',
@@ -313,7 +315,7 @@ List<Bank> banksList = [
         },
       ],
       bankInfo:
-          'First Bank of Nigeria\n\nHeadquarters: 35 Marina, Lagos, Lagos State, Nigeria\n\nhttps://firstbanknigeria.com/'),
+          'First Bank of Nigeria\n\nHeadquarters: 35 Marina, Lagos, Lagos State, Nigeria\n\nhttps://firstbanknigeria.com'),
   Bank(
       name: 'GTB',
       image: 'assets/images/gtbank.png',
@@ -531,7 +533,7 @@ List<Bank> banksList = [
         },
       ],
       bankInfo:
-          'Guaranty Trust Holding Company PLC (GTCO PLC)\nLSE: GRTB\n\nHeadquarters: 635 Akin Adesola Street, Victoria Island, Lagos, Lagos State, Nigeria\n\nhttps://www.gtbank.com/'),
+          'Guaranty Trust Holding Company PLC (GTCO PLC)\nLSE: GRTB\n\nHeadquarters: 635 Akin Adesola Street, Victoria Island, Lagos, Lagos State, Nigeria\n\nhttps://www.gtbank.com'),
   Bank(
       name: 'Heritage Bank',
       image: 'assets/images/heritagebank.png',
@@ -561,7 +563,8 @@ List<Bank> banksList = [
           'dialUp': 'no',
         },
       ],
-      bankInfo: 'Jaiz Bank of Nigeria.'),
+      bankInfo:
+          'Jaiz Bank Plc\n\nHeadquarters: Abuja, Nigeria.\n\nhttps://jaizbankplc.com'),
   Bank(
       name: 'Keystone',
       image: 'assets/images/keystonebank.png',
@@ -620,7 +623,8 @@ List<Bank> banksList = [
           'code': '*5045*2*#',
         },
       ],
-      bankInfo: 'Lotus Bank of Nigeria.'),
+      bankInfo:
+          'Lotus Bank of Nigeria.\n\nAddress: Adetokunbo Ademola Street Eti-Osa LGA, Victoria Island 101241, Lagos\n\nhttps://www.lotusbank.com'),
   Bank(
       name: 'Polaris Bank',
       image: 'assets/images/polarisbank.png',
@@ -734,7 +738,7 @@ List<Bank> banksList = [
           'showText': 'Phone Number',
         },
       ],
-      bankInfo: 'Standard Chartered Bank of Nigeria.'),
+      bankInfo: 'Standard Chartered Bank of Nigeria.\n\nhttps://www.sc.com/ng'),
   Bank(
       name: 'Sterling Bank',
       image: 'assets/images/sterlingbank.png',
@@ -845,7 +849,8 @@ List<Bank> banksList = [
           'showText': 'Account Number',
         },
       ],
-      bankInfo: 'Taj Bank of Nigeria.'),
+      bankInfo:
+          'Taj Bank of Nigeria.\n\nHeadquarters: Abuja, Nigeria\n\nhttps://www.tajbank.com'),
   Bank(
       name: 'UBA',
       image: 'assets/images/ubabank.png',
@@ -1078,7 +1083,7 @@ List<Bank> banksList = [
         },
       ],
       bankInfo:
-          'United Bank for Africa\nNSE: UBA\n\nHeadquarters: UBA House, 57 Marina, Lagos, Lagos State, Nigeria.\n\nhttps://www.ubagroup.com/'),
+          'United Bank for Africa\nNSE: UBA\n\nHeadquarters: UBA House, 57 Marina, Lagos, Lagos State, Nigeria.\n\nhttps://www.ubagroup.com'),
   Bank(
       name: 'Union Bank',
       image: 'assets/images/unionbank.png',
@@ -1090,7 +1095,8 @@ List<Bank> banksList = [
           'code': '*826#',
         },
       ],
-      bankInfo: 'Union Bank of Nigeria.'),
+      bankInfo:
+          'Union Bank of Nigeria\n\nNSE: UBN\n\nHeadquarters: 36 Marina, Lagos Island, Lagos, Lagos State, Nigeria\n\nhttps://www.unionbankng.com'),
   Bank(
       name: 'Unity Bank',
       image: 'assets/images/unitybank.jpg',
@@ -1102,8 +1108,7 @@ List<Bank> banksList = [
           'code': '*7799#',
         },
       ],
-      bankInfo:
-          'Unity Bank plc\nNSE: UNITYBNK\n\nhttps://www.unitybankng.com/'),
+      bankInfo: 'Unity Bank plc\nNSE: UNITYBNK\n\nhttps://www.unitybankng.com'),
   Bank(
       name: 'Wema Bank',
       image: 'assets/images/wemabank.png',
@@ -1248,7 +1253,8 @@ List<Bank> banksList = [
           'showText': 'Ref. Number',
         },
       ],
-      bankInfo: 'Wema Bank of Nigeria.'),
+      bankInfo:
+          'Wema Bank Plc.\n\nNSE: WEMABANK\n\nHeadquarters: 54 Marina, Lagos Island, Lagos State, Nigeria\n\nhttps://www.wemabank.com'),
   Bank(
       name: 'Zenith Bank',
       image: 'assets/images/zenithbank.png',

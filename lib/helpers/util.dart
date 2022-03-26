@@ -29,10 +29,8 @@ class Util {
       if (Platform.isAndroid) {
         android_intent.Intent()
           ..setAction(android_action.Action.ACTION_CALL)
-          ..setData(Uri(scheme: 'tel', path: url))
+          ..setData(Uri(scheme: 'tel', path: url.replaceAll('tel:', '')))
           ..startActivity().catchError((e) async {
-            print(e);
-
             if (await canLaunch(url)) {
               await launch(url);
             }
@@ -55,8 +53,10 @@ class Util {
   }) {
     FlutterShare.share(
       title: "$bankName's $ussdAction USSD Code",
-      text: "$bankName's $ussdAction USSD Code\n$ussdCode",
-      linkUrl: 'https://github.com/rafmme',
+      text:
+          "$bankName's $ussdAction USSD Code\n\n$ussdCode\n\n~ NG USSD Banking App",
+      linkUrl:
+          'Download from: https://github.com/rafmme/ng-ussd-banking-app/releases/download/v1.0.0/ng-ussd-banking-app.apk',
     );
   }
 

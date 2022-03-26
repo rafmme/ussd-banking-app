@@ -97,10 +97,11 @@ class BankUssdActionWidget extends StatelessWidget {
             },
             leading: CircleAvatar(
               backgroundColor: bank.color,
-              child: Text(
-                '${index + 1}',
-                style: const TextStyle(
+              child: const Text(
+                '+',
+                style: TextStyle(
                   color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               foregroundColor: bank.color,

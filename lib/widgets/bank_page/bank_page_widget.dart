@@ -25,6 +25,9 @@ class BankScreenWidget extends StatelessWidget {
                   width: size.width,
                   decoration: const BoxDecoration(
                     color: kBankUSSDBackground,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(0)),
                   ),
                   child: Column(
                     children: [
