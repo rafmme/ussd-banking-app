@@ -45,19 +45,14 @@ class Util {
     required String ussdCode,
   }) async {
     try {
+      requestPhoneCallAccessPermission();
       final String url = formatUssdCode(ussdCode);
 
       if (Platform.isAndroid) {
-        requestPhoneCallAccessPermission();
-
         android_intent.Intent()
           ..setAction(android_action.Action.ACTION_CALL)
           ..setData(Uri(scheme: 'tel', path: url.replaceAll('tel:', '')))
-          ..startActivity().catchError((e) async {
-            if (await canLaunch(url)) {
-              await launch(url);
-            }
-          });
+          ..startActivity();
         return;
       }
 

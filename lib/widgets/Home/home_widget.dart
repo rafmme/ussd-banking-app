@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ussd_app/data/sql_helper.dart';
 import 'package:ussd_app/helpers/constants.dart';
+import 'package:ussd_app/helpers/util.dart';
 import 'package:ussd_app/helpers/widgets_builder.dart';
 import 'package:ussd_app/widgets/Home/home_page_widget.dart';
 import 'package:ussd_app/widgets/transaction_history/transactions_history.dart';
@@ -33,6 +34,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    Util.requestPhoneCallAccessPermission();
     var appBarTitle = 'USSD BANKING';
 
     if (_currentPage == 1) {
