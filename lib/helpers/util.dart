@@ -5,6 +5,7 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:intent/action.dart' as android_action;
 import 'package:intent/intent.dart' as android_intent;
+import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:ussd_app/data/sql_helper.dart';
 import 'package:ussd_app/models/receipient.dart';
@@ -20,6 +21,26 @@ class Util {
     }
   }
 
+  static void requestPhoneContactsAccessPermission() async {
+    final status = await Permission.contacts.status;
+
+    if (status.isDenied) {
+      await Permission.contacts.request();
+    } else if (status.isPermanentlyDenied) {
+      openAppSettings();
+    }
+  }
+
+  static void requestPhoneCallAccessPermission() async {
+    final status = await Permission.phone.status;
+
+    if (status.isDenied) {
+      await Permission.phone.request();
+    } else if (status.isPermanentlyDenied) {
+      openAppSettings();
+    }
+  }
+
   static void dialUssdCode({
     required String ussdCode,
   }) async {
@@ -27,6 +48,8 @@ class Util {
       final String url = formatUssdCode(ussdCode);
 
       if (Platform.isAndroid) {
+        requestPhoneCallAccessPermission();
+
         android_intent.Intent()
           ..setAction(android_action.Action.ACTION_CALL)
           ..setData(Uri(scheme: 'tel', path: url.replaceAll('tel:', '')))
@@ -140,6 +163,8 @@ class Util {
   }
 
   static Future<Receipient> importContact() async {
+    requestPhoneContactsAccessPermission();
+
     final ContactPicker _contactPicker = ContactPicker();
     Contact contact = await _contactPicker.selectContact();
 
