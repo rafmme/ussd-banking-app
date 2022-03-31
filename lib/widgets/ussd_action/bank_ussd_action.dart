@@ -164,6 +164,47 @@ class BankUssdActionWidget extends StatelessWidget {
           ),
           children: const [],
         ),
+        startActionPane: ActionPane(
+          extentRatio: 0.35,
+          motion: Container(
+            decoration: const BoxDecoration(color: kUssdActionCardBg),
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Util.shareUSSDCode(
+                      bankName: bank.name,
+                      ussdCode: ussdCode!,
+                      ussdAction: ussdAction,
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.share,
+                    color: kHoomeScreenAppBarColor,
+                  ),
+                ),
+                const Spacer(),
+                IconButton(
+                  onPressed: () {
+                    _executeUSSDCode(
+                      bank: bank,
+                      context: context,
+                      ussdActionData: ussdActionData,
+                      ussdShowText: ussdShowText,
+                      ussdCode: ussdCode,
+                      ussdAction: ussdAction,
+                    );
+                  },
+                  icon: Icon(
+                    Icons.call,
+                    color: bank.color,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          children: const [],
+        ),
       ),
     );
   }

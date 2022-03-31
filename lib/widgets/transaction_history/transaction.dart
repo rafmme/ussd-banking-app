@@ -158,6 +158,49 @@ class Transaction extends StatelessWidget {
           ),
           children: const [],
         ),
+        startActionPane: ActionPane(
+          extentRatio: 0.35,
+          motion: Container(
+            decoration: const BoxDecoration(color: kUssdActionCardBg),
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    CreateWidget.displayDialog(
+                      context,
+                      'This will delete this transaction from your transactions history list on the app\n\nClick Proceed button to continue.',
+                      'Confirm Deletion',
+                      CreateWidget.buildDialogButton(
+                        context: context,
+                        isInfoDialog: false,
+                        isConfirmation: true,
+                        executeFunction: _deleteTransaction,
+                        id: transaction['id'],
+                      ),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.delete_forever_sharp,
+                    color: Colors.red,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    _executeUSSDCode(
+                      context: context,
+                      ussdCode: ussdCode,
+                      ussdAction: ussdAction,
+                      details: details,
+                    );
+                  },
+                  icon: const Icon(Icons.call_sharp),
+                  color: kHoomeScreenAppBarColor,
+                ),
+              ],
+            ),
+          ),
+          children: const [],
+        ),
       ),
     );
   }

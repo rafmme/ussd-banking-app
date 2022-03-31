@@ -50,7 +50,7 @@ class CreateWidget {
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(50),
+          topRight: Radius.circular(0),
         ),
       ),
       builder: (BuildContext context) {
