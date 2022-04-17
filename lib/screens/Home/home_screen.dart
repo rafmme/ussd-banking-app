@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       home: Center(
         child: SplashScreen(
           navigateAfterSeconds: const HomeScreenWidget(),
-          seconds: 3,
+          seconds: 1,
           imageBackground: const AssetImage('assets/images/sc.jpg'),
           loaderColor: kLotusBankColor,
         ),
