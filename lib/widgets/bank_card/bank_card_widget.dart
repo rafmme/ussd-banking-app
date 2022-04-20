@@ -28,7 +28,7 @@ class BankCard extends StatelessWidget {
             child: Card(
               color: bank.color,
               shadowColor: bank.color,
-              elevation: 1.618,
+              elevation: 10,
               child: Container(
                 padding: const EdgeInsets.all(10),
                 child: Hero(
